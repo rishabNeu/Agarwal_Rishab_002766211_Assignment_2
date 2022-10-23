@@ -14,6 +14,19 @@ public class Community {
         return house;
     }
 
+    public Community(House house, String communityName, City city) {
+        this.house = house;
+        
+        this.communityName = communityName;
+        this.city = city;
+    }
+
+    
+     public Community() {
+        
+    }
+    
+    
     public void setHouse(House house) {
         this.house = house;
     }
@@ -37,6 +50,17 @@ public class Community {
     private House house;
     private int communiytId;
     private String communityName;
+    private City city;
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+    
+    
 
 
 
