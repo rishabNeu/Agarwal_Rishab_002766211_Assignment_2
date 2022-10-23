@@ -23,9 +23,9 @@ public class CommunityJPanel extends javax.swing.JPanel {
     
     CommunityHistory cHistory;
     
-    public CommunityJPanel() {
+    public CommunityJPanel(CommunityHistory cHistory) {
         initComponents();
-        cHistory = new CommunityHistory();
+        this.cHistory = cHistory;
     }
 
     /**

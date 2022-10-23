@@ -4,8 +4,12 @@
  */
 package ui;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.City;
+import model.Community;
+import model.CommunityHistory;
 import model.House;
 import model.Person;
 import model.PersonDirectory;
@@ -20,10 +24,40 @@ public class PersonJPanel extends javax.swing.JPanel {
      * Creates new form PersonJPanel
      */
     private PersonDirectory personDirectory;
+    private CommunityHistory comm;
 
-    public PersonJPanel(PersonDirectory personDirectory) {
+    private ArrayList<Community> cList;
+    private ArrayList<String> cityList;
+
+    private ArrayList<String> communityNameList;
+    private ArrayList<String> houseList;
+
+    public PersonJPanel(PersonDirectory personDirectory, CommunityHistory comm) {
         initComponents();
+        this.cList = new ArrayList<>();
         this.personDirectory = personDirectory;
+        this.comm = comm;
+        cityList = new ArrayList<>();
+        communityNameList = new ArrayList<>();
+        houseList = new ArrayList<>();
+
+        cList = comm.getCommunityDetails();
+        for (Community community : cList) {
+
+            cityList.add(community.getCity().getCityName());
+            communityNameList.add(community.getCommunityName());
+            houseList.add(community.getHouse().getAddress());
+            
+
+        }
+        
+        for (String city : cityList) {
+               comboCity.addItem(city);
+
+        }
+        
+        
+
     }
 
     /**
@@ -51,6 +85,12 @@ public class PersonJPanel extends javax.swing.JPanel {
         txtMobile = new javax.swing.JTextField();
         btnCreatePatient = new javax.swing.JButton();
         lblCreatePatient = new javax.swing.JLabel();
+        lblCity = new javax.swing.JLabel();
+        lblCommunity = new javax.swing.JLabel();
+        lblHouse = new javax.swing.JLabel();
+        comboCity = new javax.swing.JComboBox<>();
+        comboCommunity = new javax.swing.JComboBox<>();
+        comboHouse = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPersons = new javax.swing.JTable();
@@ -116,6 +156,12 @@ public class PersonJPanel extends javax.swing.JPanel {
         lblCreatePatient.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCreatePatient.setText("CREATE PATIENT");
 
+        lblCity.setText("City :");
+
+        lblCommunity.setText("Community :");
+
+        lblHouse.setText("House :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -123,28 +169,44 @@ public class PersonJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(btnCreatePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(212, 212, 212)
+                        .addComponent(lblCreatePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblMobile, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(lblPatientName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPersonId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ComboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPersonName)
-                            .addComponent(txtPersonId)
-                            .addComponent(txtAge)
-                            .addComponent(txtAddress)
-                            .addComponent(txtMobile, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(lblCreatePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblCity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblPatientName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblPersonId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                    .addComponent(lblAge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtPersonName, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                    .addComponent(txtPersonId)
+                                    .addComponent(txtAge)
+                                    .addComponent(comboCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboCommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboHouse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(btnCreatePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblMobile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                    .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblGender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ComboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtAddress)
+                                    .addComponent(txtMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(345, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -166,6 +228,18 @@ public class PersonJPanel extends javax.swing.JPanel {
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCity, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -178,7 +252,7 @@ public class PersonJPanel extends javax.swing.JPanel {
                     .addComponent(txtMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(btnCreatePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         PersonTab.addTab("Create", jPanel1);
@@ -295,7 +369,7 @@ public class PersonJPanel extends javax.swing.JPanel {
                     .addComponent(btnPersonView)
                     .addComponent(btnPersonDelete)
                     .addComponent(btnPersonUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPatientName1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -347,6 +421,10 @@ public class PersonJPanel extends javax.swing.JPanel {
     private void btnCreatePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePatientActionPerformed
         // TODO add your handling code here:
 
+        
+        
+        
+        
         String name = txtPersonName.getText();
         String ageTemp = txtAge.getText();
         String personId = txtPersonId.getText();
@@ -438,7 +516,7 @@ public class PersonJPanel extends javax.swing.JPanel {
 
     private void btnPersonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonUpdateActionPerformed
         // TODO add your handling code here:
-           int selectRowIndex = tblPersons.getSelectedRow();
+        int selectRowIndex = tblPersons.getSelectedRow();
 
         if (selectRowIndex < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row to update");
@@ -448,35 +526,29 @@ public class PersonJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblPersons.getModel();
         Person selectedPerson = (Person) model.getValueAt(selectRowIndex, 0);
 
-      String name = txtPerName.getText();
+        String name = txtPerName.getText();
         String ageTemp = txtPerAge.getText();
         String personId = txtPerId.getText();
         String gender = ComboPerGender.getSelectedItem().toString();
         String phone = txtPerMobile.getText();
         String address = txtPerAddress.getText();
-   
 
-       // if (isValid) {
+        // if (isValid) {
+        selectedPerson.setAge(Integer.parseInt(ageTemp));
+        selectedPerson.setName(name);
+        selectedPerson.setPersonId(Integer.parseInt(personId));
+        selectedPerson.setGender(gender);
+        selectedPerson.setMobile(Long.parseLong(phone));
+        selectedPerson.setHouse(new House(address));
 
-            selectedPerson.setAge(Integer.parseInt(ageTemp));
-            selectedPerson.setName(name);
-            selectedPerson.setPersonId(Integer.parseInt(personId));
-            selectedPerson.setGender(gender);
-            selectedPerson.setMobile(Long.parseLong(phone));
-            selectedPerson.setHouse(new House(address));
+        JOptionPane.showMessageDialog(null, "Person updated");
 
+        populatePeopleTable();
 
-            
-
-            JOptionPane.showMessageDialog(null, "Person updated");
-
-            populatePeopleTable();
-
-          clearAllTextFields();
+        clearAllTextFields();
 
         //}
-        
-        
+
     }//GEN-LAST:event_btnPersonUpdateActionPerformed
 
 
@@ -488,6 +560,9 @@ public class PersonJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnPersonDelete;
     private javax.swing.JButton btnPersonUpdate;
     private javax.swing.JButton btnPersonView;
+    private javax.swing.JComboBox<String> comboCity;
+    private javax.swing.JComboBox<String> comboCommunity;
+    private javax.swing.JComboBox<String> comboHouse;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -495,9 +570,12 @@ public class PersonJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblAddress1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAge1;
+    private javax.swing.JLabel lblCity;
+    private javax.swing.JLabel lblCommunity;
     private javax.swing.JLabel lblCreatePatient;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblGender1;
+    private javax.swing.JLabel lblHouse;
     private javax.swing.JLabel lblMobile;
     private javax.swing.JLabel lblMobile1;
     private javax.swing.JLabel lblPatientName;

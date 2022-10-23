@@ -4,6 +4,7 @@
  */
 package ui;
 
+import model.CommunityHistory;
 import model.Person;
 import model.PersonDirectory;
 
@@ -21,11 +22,12 @@ public class SystemJFrame extends javax.swing.JFrame {
     
     Person p ;
     PersonDirectory personDirectory;
-    
+    CommunityHistory cHistory ;
     public SystemJFrame() {
         initComponents();
        personDirectory = new PersonDirectory();
        p = new Person();
+       cHistory =  new CommunityHistory();
     }
 
     /**
@@ -167,7 +169,7 @@ public class SystemJFrame extends javax.swing.JFrame {
 
     private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
         
-         PersonJPanel personPanel = new PersonJPanel(personDirectory); 
+         PersonJPanel personPanel = new PersonJPanel(personDirectory,cHistory); 
         jSplitPane1.setRightComponent(personPanel);
         
         
@@ -188,7 +190,7 @@ public class SystemJFrame extends javax.swing.JFrame {
 
     private void btnManageCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCommunityActionPerformed
         // TODO add your handling code here:
-        CommunityJPanel communityPanel = new CommunityJPanel(); 
+        CommunityJPanel communityPanel = new CommunityJPanel( cHistory); 
         jSplitPane1.setRightComponent(communityPanel);
     }//GEN-LAST:event_btnManageCommunityActionPerformed
 
