@@ -32,7 +32,7 @@ public class PersonJPanel extends javax.swing.JPanel {
 
     private boolean isSet = false;
     private ArrayList<Community> cList;
-    private ArrayList<String> cityList;
+    private HashSet<String> cityList;
 
     private ArrayList<String> communityNameList;
     private ArrayList<String> houseList;
@@ -45,7 +45,7 @@ public class PersonJPanel extends javax.swing.JPanel {
         this.cList = new ArrayList<>();
         this.personDirectory = personDirectory;
         this.comm = comm;
-        cityList = new ArrayList<>();
+        cityList = new HashSet<>();
         communityNameList = new ArrayList<>();
         houseList = new ArrayList<>();
         map = new HashMap<>();

@@ -184,6 +184,8 @@ public class SystemJFrame extends javax.swing.JFrame {
 
     private void btnManageHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalActionPerformed
         // TODO add your handling code here:
+        HospitalJPanel hospPanel = new HospitalJPanel();
+        jSplitPane1.setRightComponent(hospPanel);
     }//GEN-LAST:event_btnManageHospitalActionPerformed
 
     private void btnManageEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEncounterActionPerformed
