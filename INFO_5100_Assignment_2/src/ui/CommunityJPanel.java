@@ -4,6 +4,7 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
 import model.Community;
@@ -186,8 +187,11 @@ public class CommunityJPanel extends javax.swing.JPanel {
         c.setHouse(new House(house));
         
     
-        
-        
+        JOptionPane.showMessageDialog(this, "Community related to city created");
+
+        txtCity.setText("");
+        txtCommunity.setText("");
+        txtHouse.setText("");
         
         
         

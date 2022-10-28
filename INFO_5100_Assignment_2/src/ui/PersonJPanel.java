@@ -5,6 +5,7 @@
 package ui;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
@@ -56,6 +57,31 @@ public class PersonJPanel extends javax.swing.JPanel {
 
         }
         
+          
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+       
+       
+        for (Community community : cList) {
+           
+            ArrayList<String> communityVal = new ArrayList<>();
+           
+            if(cityList.contains(community.getCity().getCityName()))
+            {
+                 if(map.get(community.getCity().getCityName())==null) //.add(community.getCommunityName());
+                 {
+                     communityVal.add(community.getCommunityName());
+                     map.put(community.getCity().getCityName(),communityVal);
+                 }else{
+                     
+                     map.get(community.getCity().getCityName()).add(community.getCommunityName());
+                                        //  communityVal.add(community.getCommunityName());
+
+                    // map.put(community.getCity().getCityName(),communityVal);
+                 }
+                     
+            }
+           
+        }
         
 
     }
