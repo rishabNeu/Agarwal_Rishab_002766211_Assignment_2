@@ -9,9 +9,28 @@ package model;
  * @author Rishab
  */
 public class Vitals {
+    
+    private Encounter encounter;
+
+    public Encounter getEncounter() {
+        return encounter;
+    }
+
+    public void setEncounter(Encounter encounter) {
+        this.encounter = encounter;
+    }
     private int bloodPressure;
     private int pulse;
 
+    private int bloodSugar;
+
+    public int getBloodSugar() {
+        return bloodSugar;
+    }
+
+    public void setBloodSugar(int bloodSugar) {
+        this.bloodSugar = bloodSugar;
+    }
     public int getPulse() {
         return pulse;
     }
@@ -39,5 +58,7 @@ public class Vitals {
     public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
+
+    
     
 }

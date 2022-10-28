@@ -9,15 +9,35 @@ package model;
  * @author Rishab
  */
 public class Encounter {
-    private Vitals vital;
+    //private Vitals vital;
+    private int encounterCount = 0;
 
-    public Vitals getVital() {
-        return vital;
+    public int getEncounterCount() {
+        return encounterCount;
     }
+    
+    
+    public Encounter()
+    {
+        
+    }
+    
+    public Encounter(int encCount)
+    {
+       this.encounterCount = encCount;
+    }
+    
 
-    public void setVital(Vitals vital) {
-        this.vital = vital;
+    public void setEncounterCount(int encounterCount) {
+        this.encounterCount = encounterCount;
     }
+//    public Vitals getVital() {
+//        return vital;
+//    }
+
+//    public void setVital(Vitals vital) {
+//        this.vital = vital;
+//    }
 
     public EncounterHistory getEncounterHistory() {
         return encounterHistory;

@@ -6,8 +6,11 @@ package ui;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Encounter;
 import model.Person;
 import model.PersonDirectory;
+import model.VitalHistory;
+import model.Vitals;
 
 /**
  *
@@ -19,10 +22,12 @@ public class DoctorJPanel extends javax.swing.JPanel {
      * Creates new form DoctorJPanel
      */
     PersonDirectory personDirectory;
+    VitalHistory vitalHistory;
     public DoctorJPanel( PersonDirectory personDir) {
         initComponents();
         personDirectory = personDir;
         populatePatientTable();
+        vitalHistory = new VitalHistory();
     }
 
     /**
@@ -50,7 +55,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         textPressure = new javax.swing.JTextField();
         textPulse = new javax.swing.JTextField();
         lablId = new javax.swing.JLabel();
-        textName = new javax.swing.JTextField();
+        textPatientName = new javax.swing.JTextField();
         buttonSave = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableEncounter = new javax.swing.JTable();
@@ -140,7 +145,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
                         .addGap(50, 50, 50)
                         .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textBloodSugar, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                            .addComponent(textName)
+                            .addComponent(textPatientName)
                             .addComponent(textPressure)
                             .addComponent(textTemperature)
                             .addComponent(textPulse)))
@@ -157,7 +162,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lablId)
-                    .addComponent(textName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(penelVitalSignsLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -193,7 +198,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Blood Sugar", "Pressure", "Temperature", "Pulse Rate", "Timestamp"
+                "Blood Sugar", "Pressure", "Temperature", "Pulse Rate", "Encounter"
             }
         ));
         jScrollPane2.setViewportView(tableEncounter);
@@ -294,8 +299,18 @@ public class DoctorJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
         int selectedRowIndex = tblPatientInfo.getSelectedRow();
-       // Patient selectedPatientDetails = (Patient)model.getValueAt(selectedRowIndex, 0);
-      //  textName.setText(String.valueOf(selectedPatientDetails));
+        
+         if (selectedRowIndex < 0) {
+            JOptionPane.showConfirmDialog(this, "Please select a row");
+            return;
+        }
+
+         Person selectedPerson =(Person) model.getValueAt(selectedRowIndex, 0);
+       
+         textPatientName.setText(selectedPerson.getName());
+
+         
+
     }//GEN-LAST:event_buttonAddVitalsActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
@@ -342,11 +357,23 @@ public class DoctorJPanel extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
             int selectedRowIndex = tblPatientInfo.getSelectedRow();
             if (selectedRowIndex <0){
-                JOptionPane.showMessageDialog(this, "Please Select a row to add as a Patient");
-                return;
+                //JOptionPane.showMessageDialog(this, "Please Select a row to add as a Patient");
+                //return;
             }
 
-            try{
+         //   try{
+                Encounter e = new Encounter();
+                Vitals v=vitalHistory.addVitals();
+                v.setBloodPressure(Integer.parseInt(textBloodSugar.getText()));
+                v.setPulse(Integer.parseInt(textPulse.getText()));
+                v.setTemperature(Integer.parseInt(textBloodSugar.getText()));
+                e.setEncounterCount(e.getEncounterCount()+1);
+                v.setEncounter(e);
+                JOptionPane.showMessageDialog(this, "Vitals for selected patient added");
+                
+                
+                populateEncounterTable();
+                
                // Patient selectedPatientDetails = (Patient)model.getValueAt(selectedRowIndex, 0);
                 //  txtPatientIDPatientInformation.setText(String.valueOf(selectedPatientDetails));
              //   Encounter e = selectedPatientDetails.addNewEncounterDetails();
@@ -360,11 +387,11 @@ public class DoctorJPanel extends javax.swing.JPanel {
               //  LocalDateTime now = LocalDateTime.now();
                // e.setUpdateTime(dtf.format(now));
 
-                int selectedPatientID = (int) model.getValueAt(selectedRowIndex, 1);
+              //  int selectedPatientID = (int) model.getValueAt(selectedRowIndex, 1);
                 //populateEncounterTable(selectedPatientID);
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(this, "Please provide correct values");
-            }
+//            }catch(Exception e){
+//                JOptionPane.showMessageDialog(this, "Please provide correct values");
+//            }
         }
 
     }//GEN-LAST:event_buttonSaveActionPerformed
@@ -412,7 +439,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tableEncounter;
     private javax.swing.JTable tblPatientInfo;
     private javax.swing.JTextField textBloodSugar;
-    private javax.swing.JTextField textName;
+    private javax.swing.JTextField textPatientName;
     private javax.swing.JTextField textPressure;
     private javax.swing.JTextField textPulse;
     private javax.swing.JTextField textTemperature;
@@ -433,6 +460,25 @@ public class DoctorJPanel extends javax.swing.JPanel {
            model.addRow(row);
            
        }
+
+    }
+
+    private void populateEncounterTable() {
+
+       DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
+       model.setRowCount(0);
+       
+       for (Vitals v : vitalHistory.getVitalDetails()){
+           Object[] row = new Object[6];
+           row[0] = v.getBloodSugar();
+           row[1] = v.getBloodPressure();
+           row[2] = v.getTemperature();
+           row[3] = v.getPulse();
+           row[4] = v.getEncounter().getEncounterCount();
+           model.addRow(row);
+           
+       }
+
 
     }
 }

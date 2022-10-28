@@ -19,7 +19,15 @@ public class Person {
     private long mobile;
     private String gender;
     private House house;
-    
+    private Community community;
+
+    public Community getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(Community community) {
+        this.community = community;
+    }
     
     
      @Override
