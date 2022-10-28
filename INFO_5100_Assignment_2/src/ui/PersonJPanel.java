@@ -6,6 +6,9 @@ package ui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
@@ -27,11 +30,15 @@ public class PersonJPanel extends javax.swing.JPanel {
     private PersonDirectory personDirectory;
     private CommunityHistory comm;
 
+    private boolean isSet = false;
     private ArrayList<Community> cList;
     private ArrayList<String> cityList;
 
     private ArrayList<String> communityNameList;
     private ArrayList<String> houseList;
+
+    private HashMap<String, ArrayList<String>> map;
+    private HashMap<String, ArrayList<String>> mapHouse;
 
     public PersonJPanel(PersonDirectory personDirectory, CommunityHistory comm) {
         initComponents();
@@ -41,6 +48,8 @@ public class PersonJPanel extends javax.swing.JPanel {
         cityList = new ArrayList<>();
         communityNameList = new ArrayList<>();
         houseList = new ArrayList<>();
+        map = new HashMap<>();
+        mapHouse = new HashMap<>();
 
         cList = comm.getCommunityDetails();
         for (Community community : cList) {
@@ -48,41 +57,18 @@ public class PersonJPanel extends javax.swing.JPanel {
             cityList.add(community.getCity().getCityName());
             communityNameList.add(community.getCommunityName());
             houseList.add(community.getHouse().getAddress());
-            
-
         }
+
+        comboCity.addItem("Select a city");
         
         for (String city : cityList) {
-               comboCity.addItem(city);
+            comboCity.addItem(city);
 
         }
-        
-          
-        HashMap<String, ArrayList<String>> map = new HashMap<>();
-       
-       
-        for (Community community : cList) {
-           
-            ArrayList<String> communityVal = new ArrayList<>();
-           
-            if(cityList.contains(community.getCity().getCityName()))
-            {
-                 if(map.get(community.getCity().getCityName())==null) //.add(community.getCommunityName());
-                 {
-                     communityVal.add(community.getCommunityName());
-                     map.put(community.getCity().getCityName(),communityVal);
-                 }else{
-                     
-                     map.get(community.getCity().getCityName()).add(community.getCommunityName());
-                                        //  communityVal.add(community.getCommunityName());
 
-                    // map.put(community.getCity().getCityName(),communityVal);
-                 }
-                     
-            }
-           
-        }
         
+        setCommunityAllProperties();
+       
 
     }
 
@@ -187,6 +173,23 @@ public class PersonJPanel extends javax.swing.JPanel {
         lblCommunity.setText("Community :");
 
         lblHouse.setText("House :");
+
+        comboCity.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboCityItemStateChanged(evt);
+            }
+        });
+
+        comboCommunity.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboCommunityItemStateChanged(evt);
+            }
+        });
+        comboCommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCommunityActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -447,10 +450,6 @@ public class PersonJPanel extends javax.swing.JPanel {
     private void btnCreatePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePatientActionPerformed
         // TODO add your handling code here:
 
-        
-        
-        
-        
         String name = txtPersonName.getText();
         String ageTemp = txtAge.getText();
         String personId = txtPersonId.getText();
@@ -483,7 +482,6 @@ public class PersonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCreatePatientActionPerformed
 
     private void PersonTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PersonTabMouseClicked
-        // TODO add your handling code here:
 
         populatePeopleTable();
 
@@ -577,6 +575,49 @@ public class PersonJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnPersonUpdateActionPerformed
 
+    private void comboCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCityItemStateChanged
+
+         setHouseAllProperties();
+        
+        for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+
+            if (comboCity.getSelectedItem().equals(entry.getKey())) {
+                ArrayList<String> list = entry.getValue();
+                comboCommunity.removeAllItems();
+
+                for (String community : list) {
+
+                    comboCommunity.addItem(community);
+                }
+
+            }
+
+        }
+        
+
+    }//GEN-LAST:event_comboCityItemStateChanged
+
+    private void comboCommunityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboCommunityItemStateChanged
+
+//        for (Map.Entry<String, ArrayList<String>> entry : mapHouse.entrySet()) {
+//
+//            if (comboCommunity.getSelectedItem().equals(entry.getKey())) {
+//                ArrayList<String> list = entry.getValue();
+//                comboHouse.removeAllItems();
+//                for (String house : list) {
+//                    comboHouse.addItem(house);
+//
+//                }
+//
+//            }
+//        }
+    }//GEN-LAST:event_comboCommunityItemStateChanged
+
+    private void comboCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCommunityActionPerformed
+
+
+    }//GEN-LAST:event_comboCommunityActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboGender;
@@ -652,4 +693,46 @@ public class PersonJPanel extends javax.swing.JPanel {
         txtPerAddress.setText("");
 
     }
+
+    public void setHouseAllProperties() {
+        //rishab
+        for (Community community : cList) {
+
+            ArrayList<String> HouseVal = new ArrayList<>();
+
+            if (communityNameList.contains(community.getCommunityName())) {
+                if (mapHouse.get(community.getCommunityName()) == null) {
+                    HouseVal.add(community.getHouse().getAddress());
+                    mapHouse.put(community.getCommunityName(), HouseVal);
+                } else {
+
+                    mapHouse.get(community.getCommunityName()).add(community.getHouse().getAddress());
+
+                }
+
+            }
+
+        }
+    }
+
+    public void setCommunityAllProperties() {
+        for (Community community : cList) {
+
+            ArrayList<String> communityVal = new ArrayList<>();
+
+            if (cityList.contains(community.getCity().getCityName())) {
+                if (map.get(community.getCity().getCityName()) == null) {
+                    communityVal.add(community.getCommunityName());
+                    map.put(community.getCity().getCityName(), communityVal);
+                } else {
+
+                    map.get(community.getCity().getCityName()).add(community.getCommunityName());
+
+                }
+
+            }
+
+        }
+    }
+
 }

@@ -177,7 +177,9 @@ public class SystemJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManagePatientActionPerformed
 
     private void btnManageDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorActionPerformed
-       
+
+        DoctorJPanel docPanel = new DoctorJPanel(  personDirectory);
+        jSplitPane1.setRightComponent(docPanel);
     }//GEN-LAST:event_btnManageDoctorActionPerformed
 
     private void btnManageHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalActionPerformed
