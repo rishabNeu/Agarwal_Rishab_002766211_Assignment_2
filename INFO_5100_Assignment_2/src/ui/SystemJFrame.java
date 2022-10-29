@@ -5,6 +5,7 @@
 package ui;
 
 import model.CommunityHistory;
+import model.PatientDirectory;
 import model.Person;
 import model.PersonDirectory;
 
@@ -23,11 +24,13 @@ public class SystemJFrame extends javax.swing.JFrame {
     Person p ;
     PersonDirectory personDirectory;
     CommunityHistory cHistory ;
+    PatientDirectory patientDir;
     public SystemJFrame() {
         initComponents();
        personDirectory = new PersonDirectory();
        p = new Person();
        cHistory =  new CommunityHistory();
+       patientDir = new PatientDirectory();
     }
 
     /**
@@ -169,7 +172,7 @@ public class SystemJFrame extends javax.swing.JFrame {
 
     private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
         
-         PersonJPanel personPanel = new PersonJPanel(personDirectory,cHistory); 
+         PersonJPanel personPanel = new PersonJPanel(personDirectory,cHistory,patientDir); 
         jSplitPane1.setRightComponent(personPanel);
         
         

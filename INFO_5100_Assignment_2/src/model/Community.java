@@ -21,6 +21,11 @@ public class Community {
         this.city = city;
     }
 
+    public Community(String name)
+    {
+        this.communityName = name;
+    }
+    
     
      public Community() {
         

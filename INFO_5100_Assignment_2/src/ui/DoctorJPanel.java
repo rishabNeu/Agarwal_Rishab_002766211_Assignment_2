@@ -65,6 +65,8 @@ public class DoctorJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 204, 255));
+
         tblPatientInfo.setBackground(new java.awt.Color(204, 204, 255));
         tblPatientInfo.setForeground(new java.awt.Color(102, 255, 102));
         tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
@@ -101,6 +103,8 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 buttonRefreshActionPerformed(evt);
             }
         });
+
+        penelVitalSigns.setBackground(new java.awt.Color(153, 204, 255));
 
         labelVitalSigns.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         labelVitalSigns.setText("Vital Signs");
@@ -216,7 +220,6 @@ public class DoctorJPanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(255, 51, 0));
         jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("                                                     PATIENT SUMMARY");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

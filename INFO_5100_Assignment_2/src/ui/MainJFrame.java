@@ -35,6 +35,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
+
         lblUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUsername.setText("Username");
 

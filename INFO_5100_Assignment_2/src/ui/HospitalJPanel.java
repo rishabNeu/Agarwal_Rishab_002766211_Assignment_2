@@ -48,8 +48,12 @@ public class HospitalJPanel extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+
         lblCreatePatient.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCreatePatient.setText("CREATE HOSPITAL");
+
+        jPanel3.setBackground(new java.awt.Color(153, 204, 255));
 
         labelHospitalId1.setText("Hospital Id");
 
@@ -142,6 +146,8 @@ public class HospitalJPanel extends javax.swing.JPanel {
         );
 
         PersonTab.addTab("Create", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

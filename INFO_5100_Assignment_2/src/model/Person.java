@@ -21,6 +21,18 @@ public class Person {
     private House house;
     private Community community;
 
+    
+  
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    private City city;
+    
     public Community getCommunity() {
         return community;
     }

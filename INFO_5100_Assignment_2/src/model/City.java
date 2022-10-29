@@ -11,7 +11,7 @@ package model;
 public class City {
     private String cityName;
     private Community community;
-
+    
     public String getCityName() {
         return cityName;
     }

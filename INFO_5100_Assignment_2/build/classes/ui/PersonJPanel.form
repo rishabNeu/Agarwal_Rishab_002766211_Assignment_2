@@ -16,7 +16,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PersonTab" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="PersonTab" min="-2" pref="1095" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -34,6 +37,11 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="99" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Create">
@@ -86,20 +94,18 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="lblMobile" alignment="0" pref="99" max="32767" attributes="0"/>
-                                          <Component id="lblAddress" alignment="0" max="32767" attributes="0"/>
                                           <Component id="lblGender" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="ComboGender" max="32767" attributes="0"/>
-                                          <Component id="txtAddress" max="32767" attributes="0"/>
                                           <Component id="txtMobile" min="-2" pref="142" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="345" max="32767" attributes="0"/>
+                      <EmptySpace pref="618" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -138,11 +144,6 @@
                           <Component id="lblHouse" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="comboHouse" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblAddress" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="txtAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblGender" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
@@ -155,7 +156,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="btnCreatePatient" min="-2" pref="34" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -174,11 +175,6 @@
             <Component class="javax.swing.JLabel" name="lblAge">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Age :"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblAddress">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Address :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblGender">
@@ -217,11 +213,6 @@
             <Component class="javax.swing.JTextField" name="txtAge">
               <Properties>
                 <Property name="text" type="java.lang.String" value="25"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtAddress">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Westland"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblMobile">
@@ -271,11 +262,15 @@
             <Component class="javax.swing.JComboBox" name="comboCity">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Boston"/>
+                    <StringItem index="1" value="New York"/>
+                  </StringArray>
                 </Property>
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comboCityItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboCityActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -319,22 +314,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="822" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
+                  <Component id="jScrollPane1" alignment="0" pref="1095" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
                               <Component id="btnPersonView" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
                               <Component id="btnPersonDelete" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="btnPersonUpdate" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lblMobile1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblPatientName1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblPersonId1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblAge1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblAddress1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblGender1" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -343,14 +340,57 @@
                                   <Component id="txtPerName" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPerId" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPerAge" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPerAddress" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPerMobile" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblUpdateCity1" max="32767" attributes="0"/>
+                                  <Component id="lblUpdateCommunity" pref="78" max="32767" attributes="0"/>
+                                  <Component id="lblUpdateHouse" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="comboCityUpdate" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="communityComboUpdate" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="houseComboUpdate" min="-2" pref="117" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                      <Component id="btnPersonUpdate" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="labelName2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="textPatientName" min="-2" pref="170" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="labelName1" min="-2" pref="52" max="-2" attributes="0"/>
+                                      <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                                      <Component id="textPatientId" min="-2" pref="170" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="labelName3" min="-2" pref="72" max="-2" attributes="0"/>
+                                      <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                      <Component id="textDocName" min="-2" pref="170" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+                                      <Component id="buttonSavePatient" min="-2" pref="180" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                                      <Component id="buttonAddPatient" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -359,43 +399,76 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnPersonView" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPersonDelete" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPersonUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnPersonView" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnPersonDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnPersonUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="buttonAddPatient" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblPatientName1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="txtPerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUpdateCity1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="comboCityUpdate" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblPersonId1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="txtPerId" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUpdateCommunity" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Component id="communityComboUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblAge1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                          <Component id="txtPerAge" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblUpdateHouse" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblGender1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="ComboPerGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lblMobile1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                                          <Component id="txtPerMobile" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="houseComboUpdate" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelName2" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="textPatientName" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelName1" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="textPatientId" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelName3" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="textDocName" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="48" pref="48" max="-2" attributes="0"/>
+                              <Component id="buttonSavePatient" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="56" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPatientName1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="txtPerName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPersonId1" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="txtPerId" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblAge1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="txtPerAge" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblAddress1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="txtPerAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblGender1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="ComboPerGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMobile1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="txtPerMobile" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -411,17 +484,29 @@
                 <Component class="javax.swing.JTable" name="tblPersons">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="4">
+                      <Table columnCount="8" rowCount="4">
                         <Column editable="false" title="Name" type="java.lang.String"/>
                         <Column editable="false" title="Person ID" type="java.lang.Integer"/>
                         <Column editable="false" title="Age" type="java.lang.Integer"/>
-                        <Column editable="false" title="Address" type="java.lang.String"/>
                         <Column editable="false" title="Gender" type="java.lang.String"/>
                         <Column editable="false" title="Mobile No" type="java.lang.Long"/>
+                        <Column editable="true" title="City" type="java.lang.String"/>
+                        <Column editable="true" title="Community" type="java.lang.String"/>
+                        <Column editable="true" title="House" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -476,11 +561,6 @@
                 <Property name="text" type="java.lang.String" value="Age :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblAddress1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Address :"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="lblGender1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gender :"/>
@@ -507,8 +587,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtPerAddress">
             </Component>
             <Component class="javax.swing.JTextField" name="txtPerAge">
             </Component>
@@ -544,6 +622,112 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPersonUpdateActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="comboCityUpdate">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Boston"/>
+                    <StringItem index="1" value="New York"/>
+                  </StringArray>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboCityUpdateActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="communityComboUpdate">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="communityComboUpdateActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="houseComboUpdate">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUpdateCommunity">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Community :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUpdateCity1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="City :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblUpdateHouse">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="House :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Helvetica Neue" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Add Patient"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelName2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Patient Name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="textPatientName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelName1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Patient ID"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="textPatientId">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textPatientIdKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelName3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Doctor Name"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="textDocName">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textDocNameKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonSavePatient">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Save Patient Info"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSavePatientActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonAddPatient">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Patient"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddPatientActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -57,6 +57,8 @@ public class CommunityJPanel extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+
         lblCity.setText("City :");
 
         lblCommunity.setText("Community :");
@@ -113,6 +115,8 @@ public class CommunityJPanel extends javax.swing.JPanel {
         );
 
         jTabbedCommunity.addTab("Create", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
 
         tblCommunity.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
