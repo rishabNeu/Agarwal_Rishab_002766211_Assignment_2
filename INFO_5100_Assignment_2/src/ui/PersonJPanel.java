@@ -881,11 +881,12 @@ public class PersonJPanel extends javax.swing.JPanel {
             pa.setAge(selectedPersonDetails.getAge());
             //pa.setContact(selectedPersonDetails.getAge());
             pa.setGender(selectedPersonDetails.getGender());
-            //pa.setCommunity(selectedPersonDetails.getCommunity());
-            //pa.setCity(selectedPersonDetails.getCity());
+            pa.setCommunity(selectedPersonDetails.getCommunity());
+            pa.setCity(selectedPersonDetails.getCity());
             pa.setHouse(selectedPersonDetails.getHouse());
             pa.setPatientId(Integer.parseInt(textPatientId.getText()));
             pa.setDoctorName(textDocName.getText());
+            System.out.println(patientDirectory.getPatientDetails());
             JOptionPane.showMessageDialog(null, "Patient Details Added");
         }
         }

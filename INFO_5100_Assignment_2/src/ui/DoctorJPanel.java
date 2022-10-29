@@ -7,6 +7,8 @@ package ui;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
+import model.Patient;
+import model.PatientDirectory;
 import model.Person;
 import model.PersonDirectory;
 import model.VitalHistory;
@@ -22,12 +24,15 @@ public class DoctorJPanel extends javax.swing.JPanel {
      * Creates new form DoctorJPanel
      */
     PersonDirectory personDirectory;
+    PatientDirectory patientDirectory;
     VitalHistory vitalHistory;
-    public DoctorJPanel( PersonDirectory personDir) {
+    public DoctorJPanel( PersonDirectory personDir , PatientDirectory patientDir) {
         initComponents();
         personDirectory = personDir;
+        patientDirectory = patientDir;
         populatePatientTable();
         vitalHistory = new VitalHistory();
+        
     }
 
     /**
@@ -452,12 +457,12 @@ public class DoctorJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
        model.setRowCount(0);
        
-       for (Person pa : personDirectory.getPersonDetails()){
+       for (Patient pa : patientDirectory.getPatientDetails()){
            Object[] row = new Object[7];
-           row[0] = pa;
+           row[0] = pa.getPatientId();
            row[1] = pa.getName();
            row[2] = pa.getAge();
-          // row[3] = pa.getAge(); //add Community here
+           row[3] = pa.getDoctorName();
           // row[4] = pa.getCommunity();
            //row[6] = pa.getDoctorName();
            model.addRow(row);

@@ -25,6 +25,7 @@ public class SystemJFrame extends javax.swing.JFrame {
     PersonDirectory personDirectory;
     CommunityHistory cHistory ;
     PatientDirectory patientDir;
+    
     public SystemJFrame() {
         initComponents();
        personDirectory = new PersonDirectory();
@@ -181,7 +182,7 @@ public class SystemJFrame extends javax.swing.JFrame {
 
     private void btnManageDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorActionPerformed
 
-        DoctorJPanel docPanel = new DoctorJPanel(  personDirectory);
+        DoctorJPanel docPanel = new DoctorJPanel(  personDirectory,patientDir);
         jSplitPane1.setRightComponent(docPanel);
     }//GEN-LAST:event_btnManageDoctorActionPerformed
 
