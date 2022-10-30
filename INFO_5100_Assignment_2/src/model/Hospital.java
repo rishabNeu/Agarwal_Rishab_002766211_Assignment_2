@@ -8,10 +8,29 @@ package model;
  *
  * @author Rishab
  */
-public class Hospital {
+public class Hospital extends Doctor{
     private HospitalDirectory hospitalDirectory;
     private String hospitalName;
     private int hospitalId;
+      private Community community;
+    private City city;
+
+    public Community getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(Community community) {
+        this.community = community;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+    
 
     public HospitalDirectory getHospitalDirectory() {
         return hospitalDirectory;

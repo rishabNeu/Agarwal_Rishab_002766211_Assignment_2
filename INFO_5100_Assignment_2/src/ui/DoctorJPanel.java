@@ -26,12 +26,14 @@ public class DoctorJPanel extends javax.swing.JPanel {
     PersonDirectory personDirectory;
     PatientDirectory patientDirectory;
     VitalHistory vitalHistory;
-    public DoctorJPanel( PersonDirectory personDir , PatientDirectory patientDir) {
+    public DoctorJPanel( PersonDirectory personDir , PatientDirectory patientDir, VitalHistory vitalHis) {
         initComponents();
         personDirectory = personDir;
         patientDirectory = patientDir;
         populatePatientTable();
-        vitalHistory = new VitalHistory();
+       // vitalHistory = new VitalHistory();
+        vitalHistory = vitalHis;
+
         
     }
 
@@ -82,9 +84,17 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Age", "Doctor Name"
+                "Name", "ID", "Age", "Doctor Name"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblPatientInfo.setToolTipText("");
         jScrollPane1.setViewportView(tblPatientInfo);
 
@@ -121,6 +131,12 @@ public class DoctorJPanel extends javax.swing.JPanel {
         labelTemperature.setText("Temperature");
 
         labelPulse.setText("Pulse Rate");
+
+        textBloodSugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBloodSugarActionPerformed(evt);
+            }
+        });
 
         lablId.setText("Patient Name");
 
@@ -305,17 +321,17 @@ public class DoctorJPanel extends javax.swing.JPanel {
 
     private void buttonAddVitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddVitalsActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
         int selectedRowIndex = tblPatientInfo.getSelectedRow();
         
          if (selectedRowIndex < 0) {
             JOptionPane.showConfirmDialog(this, "Please select a row");
             return;
         }
+        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
+         Patient patient = (Patient) model.getValueAt(selectedRowIndex, 0);
+         
 
-         Person selectedPerson =(Person) model.getValueAt(selectedRowIndex, 0);
-       
-         textPatientName.setText(selectedPerson.getName());
+         textPatientName.setText(patient.getName());
 
          
 
@@ -424,6 +440,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
         //textLevel.setText(selectedempDet.getLevel());
     }//GEN-LAST:event_buttonViewActionPerformed
 
+    private void textBloodSugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBloodSugarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBloodSugarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Update;
@@ -459,12 +479,11 @@ public class DoctorJPanel extends javax.swing.JPanel {
        
        for (Patient pa : patientDirectory.getPatientDetails()){
            Object[] row = new Object[7];
-           row[0] = pa.getPatientId();
-           row[1] = pa.getName();
+           row[0] = pa;
+           row[1] = pa.getPatientId();
            row[2] = pa.getAge();
            row[3] = pa.getDoctorName();
-          // row[4] = pa.getCommunity();
-           //row[6] = pa.getDoctorName();
+         
            model.addRow(row);
            
        }

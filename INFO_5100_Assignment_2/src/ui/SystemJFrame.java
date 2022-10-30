@@ -5,9 +5,11 @@
 package ui;
 
 import model.CommunityHistory;
+import model.HospitalDirectory;
 import model.PatientDirectory;
 import model.Person;
 import model.PersonDirectory;
+import model.VitalHistory;
 
 
 
@@ -25,13 +27,16 @@ public class SystemJFrame extends javax.swing.JFrame {
     PersonDirectory personDirectory;
     CommunityHistory cHistory ;
     PatientDirectory patientDir;
-    
+    VitalHistory vitalHistory;
+    HospitalDirectory hospitalDirectory;
     public SystemJFrame() {
         initComponents();
        personDirectory = new PersonDirectory();
        p = new Person();
        cHistory =  new CommunityHistory();
        patientDir = new PatientDirectory();
+       vitalHistory = new VitalHistory();
+       hospitalDirectory = new HospitalDirectory();
     }
 
     /**
@@ -182,18 +187,21 @@ public class SystemJFrame extends javax.swing.JFrame {
 
     private void btnManageDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorActionPerformed
 
-        DoctorJPanel docPanel = new DoctorJPanel(  personDirectory,patientDir);
+        DoctorJPanel docPanel = new DoctorJPanel(  personDirectory,patientDir, vitalHistory);
         jSplitPane1.setRightComponent(docPanel);
     }//GEN-LAST:event_btnManageDoctorActionPerformed
 
     private void btnManageHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalActionPerformed
         // TODO add your handling code here:
-        HospitalJPanel hospPanel = new HospitalJPanel();
+        HospitalJPanel hospPanel = new HospitalJPanel(cHistory, hospitalDirectory);
         jSplitPane1.setRightComponent(hospPanel);
     }//GEN-LAST:event_btnManageHospitalActionPerformed
 
     private void btnManageEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEncounterActionPerformed
-        // TODO add your handling code here:
+        
+        EncounterJPanel encJPanel = new EncounterJPanel(personDirectory,patientDir, vitalHistory);
+        jSplitPane1.setRightComponent(encJPanel);
+        
     }//GEN-LAST:event_btnManageEncounterActionPerformed
 
     private void btnManageCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCommunityActionPerformed

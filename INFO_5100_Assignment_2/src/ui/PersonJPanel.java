@@ -36,7 +36,6 @@ public class PersonJPanel extends javax.swing.JPanel {
 
     private PatientDirectory patientDirectory;
 
-    
     private boolean isSet = false;
     private ArrayList<Community> cList;
     private HashSet<String> cityList;
@@ -59,22 +58,23 @@ public class PersonJPanel extends javax.swing.JPanel {
         map = new HashMap<>();
         mapHouse = new HashMap<>();
 
-//        cList = comm.getCommunityDetails();
-//        for (Community community : cList) {
-//
-//            cityList.add(community.getCity().getCityName());
-//            communityNameList.add(community.getCommunityName());
-//            houseList.add(community.getHouse().getAddress());
-//        }
-//
-//        comboCity.addItem("Select a city");
-//
-//        for (String city : cityList) {
-//            comboCity.addItem(city);
-//
-//        }
+        cList = comm.getCommunityDetails();
+        for (Community community : cList) {
 
-        //setCommunityAllProperties();
+            cityList.add(community.getCity().getCityName());
+            communityNameList.add(community.getCommunityName());
+            houseList.add(community.getHouse().getAddress());
+        }
+
+        comboCity.addItem("Select a city");
+
+        for (String city : cityList) {
+            comboCity.addItem(city);
+           
+
+        }
+
+        setCommunityAllProperties();
     }
 
     /**
@@ -105,7 +105,7 @@ public class PersonJPanel extends javax.swing.JPanel {
         lblHouse = new javax.swing.JLabel();
         comboCity = new javax.swing.JComboBox<>();
         comboCommunity = new javax.swing.JComboBox<>();
-        comboHouse = new javax.swing.JComboBox<>();
+        txtHouse = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPersons = new javax.swing.JTable();
@@ -124,7 +124,6 @@ public class PersonJPanel extends javax.swing.JPanel {
         btnPersonUpdate = new javax.swing.JButton();
         comboCityUpdate = new javax.swing.JComboBox<>();
         communityComboUpdate = new javax.swing.JComboBox<>();
-        houseComboUpdate = new javax.swing.JComboBox<>();
         lblUpdateCommunity = new javax.swing.JLabel();
         lblUpdateCity1 = new javax.swing.JLabel();
         lblUpdateHouse = new javax.swing.JLabel();
@@ -137,6 +136,7 @@ public class PersonJPanel extends javax.swing.JPanel {
         textDocName = new javax.swing.JTextField();
         buttonSavePatient = new javax.swing.JButton();
         buttonAddPatient = new javax.swing.JButton();
+        txtHouseUpdate = new javax.swing.JTextField();
 
         PersonTab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -188,7 +188,6 @@ public class PersonJPanel extends javax.swing.JPanel {
 
         lblHouse.setText("House :");
 
-        comboCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "New York" }));
         comboCity.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboCityItemStateChanged(evt);
@@ -210,6 +209,8 @@ public class PersonJPanel extends javax.swing.JPanel {
                 comboCommunityActionPerformed(evt);
             }
         });
+
+        txtHouse.setText("House 1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -242,7 +243,7 @@ public class PersonJPanel extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboHouse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtHouse))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(53, 53, 53)
                                 .addComponent(btnCreatePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -284,7 +285,7 @@ public class PersonJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHouse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -368,7 +369,6 @@ public class PersonJPanel extends javax.swing.JPanel {
             }
         });
 
-        comboCityUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "New York" }));
         comboCityUpdate.setToolTipText("");
         comboCityUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -458,10 +458,10 @@ public class PersonJPanel extends javax.swing.JPanel {
                             .addComponent(lblUpdateCommunity, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                             .addComponent(lblUpdateHouse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboCityUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(communityComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(houseComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboCityUpdate, 0, 117, Short.MAX_VALUE)
+                            .addComponent(communityComboUpdate, 0, 117, Short.MAX_VALUE)
+                            .addComponent(txtHouseUpdate))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
@@ -507,7 +507,7 @@ public class PersonJPanel extends javax.swing.JPanel {
                             .addComponent(lblPatientName1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblUpdateCity1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboCityUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboCityUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -515,32 +515,29 @@ public class PersonJPanel extends javax.swing.JPanel {
                             .addComponent(txtPerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblUpdateCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(communityComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblAge1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPerAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblUpdateHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ComboPerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblMobile1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPerMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(houseComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAge1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPerAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUpdateHouse, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComboPerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMobile1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPerMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelName2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelName1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelName1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtHouseUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(textPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,7 +545,7 @@ public class PersonJPanel extends javax.swing.JPanel {
                             .addComponent(textDocName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(48, 48, 48)
                         .addComponent(buttonSavePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         PersonTab.addTab("View", jPanel2);
@@ -587,9 +584,8 @@ public class PersonJPanel extends javax.swing.JPanel {
         String city = comboCity.getSelectedItem().toString();
 
         String community = comboCommunity.getSelectedItem().toString();
-        String house = comboHouse.getSelectedItem().toString();
-        
-        
+        String house = txtHouse.getText();
+
         Person p = personDirectory.addPerson();
 
         p.setName(name);
@@ -601,14 +597,13 @@ public class PersonJPanel extends javax.swing.JPanel {
         p.setCity(new City(city));
         p.setCommunity(new Community(community));
         p.setHouse(new House(house));
-        
 
         JOptionPane.showMessageDialog(this, "New Person Created");
 
         txtPersonName.setText("");
         txtAge.setText("");
         txtPersonId.setText("");
-      
+
         txtMobile.setText("");
         txtMobile.setText("");
         ComboGender.setSelectedIndex(0);
@@ -620,6 +615,8 @@ public class PersonJPanel extends javax.swing.JPanel {
     private void PersonTabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PersonTabMouseClicked
 
         populatePeopleTable();
+
+        //
 
     }//GEN-LAST:event_PersonTabMouseClicked
 
@@ -647,12 +644,23 @@ public class PersonJPanel extends javax.swing.JPanel {
         } else if (selectedPerson.getGender().equalsIgnoreCase("other")) {
             index = 3;
         }
+
         
-        comboCityUpdate.setSelectedItem(selectedPerson.getCity().getCityName());
-        communityComboUpdate.setSelectedItem(selectedPerson.getCommunity().getCommunityName());
-        houseComboUpdate.setSelectedItem(selectedPerson.getHouse().getAddress());
+            comboCityUpdate.addItem("Select a city");
+
+            for (String city : cityList) {
+                comboCityUpdate.addItem(city);
+
+            }
+
+            setCommunityAllProperties();
         
 
+        comboCityUpdate.setSelectedItem(selectedPerson.getCity().getCityName());
+        communityComboUpdate.setSelectedItem(selectedPerson.getCommunity().getCommunityName());
+//        houseComboUpdate.setSelectedItem(selectedPerson.getHouse().getAddress());
+        txtHouseUpdate.setText(selectedPerson.getHouse().getAddress());
+    
         ComboPerGender.setSelectedIndex(index);
         txtPerMobile.setText(String.valueOf(selectedPerson.getMobile()));
         //txtPerAddress.setText(selectedPerson.getHouse().getAddress());
@@ -700,12 +708,12 @@ public class PersonJPanel extends javax.swing.JPanel {
         String city = comboCityUpdate.getSelectedItem().toString();
 
         String community = communityComboUpdate.getSelectedItem().toString();
-        String house = houseComboUpdate.getSelectedItem().toString();
-        
+        String house = txtHouseUpdate.getText();
+
         // if (isValid) {
         selectedPerson.setAge(Integer.parseInt(ageTemp));
-        
-      //  selectedPerson.setName(name);
+
+        //  selectedPerson.setName(name);
         //selectedPerson.setPersonId(Integer.parseInt(personId));
         selectedPerson.setGender(gender);
         selectedPerson.setMobile(Long.parseLong(phone));
@@ -747,58 +755,25 @@ public class PersonJPanel extends javax.swing.JPanel {
     private void comboCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCommunityActionPerformed
 
         //new code
-          if (comboCommunity.getSelectedItem() != null) {
-            communityUpdateAction(comboCommunity.getSelectedItem().toString(), "new");
-        }
-        
+//          if (comboCommunity.getSelectedItem() != null) {
+//            communityUpdateAction(comboCommunity.getSelectedItem().toString(), "new");
+//        }
         //new code end
-        
-        setHouseAllProperties();
-
-        
-        
-        for (Map.Entry<String, ArrayList<String>> entry : mapHouse.entrySet()) {
-
-            if (comboCommunity.getSelectedItem() != null) {
-
-                if (comboCommunity.getSelectedItem().equals(entry.getKey())) {
-                    comboHouse.removeAllItems();
-                    ArrayList<String> list = new ArrayList<>();
-                    list = entry.getValue();
-
-                    for (String house : list) {
-
-                        comboHouse.addItem(house);
-
-                    }
-
-                }
-
-            }
-
-        }
-
-    }//GEN-LAST:event_comboCommunityActionPerformed
-
-    private void comboCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCityActionPerformed
-
-        //new code start
-        String selectedCity = comboCity.getSelectedItem().toString();
-        cityUpdateAction(selectedCity, "new");
-        
-        //new code end
-//        setCommunityAllProperties();
-//        for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+        // setHouseAllProperties();
+//        
+//        for (Map.Entry<String, ArrayList<String>> entry : mapHouse.entrySet()) {
 //
-//            if (comboCity.getSelectedItem() != null) {
+//            if (comboCommunity.getSelectedItem() != null) {
 //
-//                if (comboCity.getSelectedItem().equals(entry.getKey())) {
-//                    ArrayList<String> list = entry.getValue();
-//                    comboCommunity.removeAllItems();
+//                if (comboCommunity.getSelectedItem().equals(entry.getKey())) {
+//                    comboHouse.removeAllItems();
+//                    ArrayList<String> list = new ArrayList<>();
+//                    list = entry.getValue();
 //
-//                    for (String community : list) {
-//                        //     comboCommunity.removeAllItems();
-//                        comboCommunity.addItem(community);
+//                    for (String house : list) {
+//
+//                        comboHouse.addItem(house);
+//
 //                    }
 //
 //                }
@@ -807,30 +782,72 @@ public class PersonJPanel extends javax.swing.JPanel {
 //
 //        }
 
+    }//GEN-LAST:event_comboCommunityActionPerformed
+
+    private void comboCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCityActionPerformed
+
+        //new code start
+        // String selectedCity = comboCity.getSelectedItem().toString();
+        //cityUpdateAction(selectedCity, "new");
+        //new code end
+        //setCommunityAllProperties();
+        for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+
+            if (comboCity.getSelectedItem() != null) {
+
+                if (comboCity.getSelectedItem().equals(entry.getKey())) {
+                    ArrayList<String> list = entry.getValue();
+                    comboCommunity.removeAllItems();
+
+                    for (String community : list) {
+                        //     comboCommunity.removeAllItems();
+                        comboCommunity.addItem(community);
+                    }
+
+                }
+
+            }
+
+        }
+
     }//GEN-LAST:event_comboCityActionPerformed
 
     private void comboCityUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCityUpdateActionPerformed
         // TODO add your handling code here:
-            //new code start
-        String selectedCity = comboCityUpdate.getSelectedItem().toString();
-        cityUpdateAction(selectedCity, "update");
-        
+        //new code start
+        //   String selectedCity = comboCityUpdate.getSelectedItem().toString();
+        //  cityUpdateAction(selectedCity, "update");
+        for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+
+            if (comboCityUpdate.getSelectedItem() != null) {
+
+                if (comboCityUpdate.getSelectedItem().equals(entry.getKey())) {
+                    ArrayList<String> list = entry.getValue();
+                    communityComboUpdate.removeAllItems();
+
+                    for (String community : list) {
+                        //     comboCommunity.removeAllItems();
+                        communityComboUpdate.addItem(community);
+                    }
+
+                }
+
+            }
+
+        }
+
+
     }//GEN-LAST:event_comboCityUpdateActionPerformed
 
     private void communityComboUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityComboUpdateActionPerformed
-        
-            
-        if (communityComboUpdate.getSelectedItem() != null) {
-            communityUpdateAction(communityComboUpdate.getSelectedItem().toString(), "update");
-        }
-            
-        
+
+
     }//GEN-LAST:event_communityComboUpdateActionPerformed
 
     private void textPatientIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPatientIdKeyTyped
         // TODO add your handling code here:
         char value = evt.getKeyChar();
-        if((!Character.isDigit(value))){
+        if ((!Character.isDigit(value))) {
             evt.consume();
         }
     }//GEN-LAST:event_textPatientIdKeyTyped
@@ -838,7 +855,7 @@ public class PersonJPanel extends javax.swing.JPanel {
     private void textDocNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textDocNameKeyTyped
         // TODO add your handling code here:
         char value = evt.getKeyChar();
-        if((!Character.isAlphabetic(value))){
+        if ((!Character.isAlphabetic(value))) {
             evt.consume();
         }
     }//GEN-LAST:event_textDocNameKeyTyped
@@ -846,36 +863,35 @@ public class PersonJPanel extends javax.swing.JPanel {
     private void buttonSavePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSavePatientActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblPersons.getSelectedRow();
-        if (selectedRowIndex <0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please Select a row to add as a Patient");
             return;
         }
         byte chkPatientName = 0;   //Value 0 means the value passed is appropriate
         byte chkPatientID = 0;
         byte chkDoctorName = 0;
-        try{
-            if (textPatientName.getText().isEmpty()){
+        try {
+            if (textPatientName.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Error in provided Name Details");
                 textPatientName.setText("");
                 chkPatientName = 1;
             }
-            if (textPatientId.getText().isEmpty()){
+            if (textPatientId.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Error in provided patient ID Details");
                 textPatientId.setText("");
                 chkPatientID = 1;
             }
-            if (textDocName.getText().isEmpty()){
+            if (textDocName.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Error in provided Doctor Name Details");
                 textDocName.setText("");
                 chkDoctorName = 1;
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error in provided Details");
         }
         DefaultTableModel model = (DefaultTableModel) tblPersons.getModel();
-        Person selectedPersonDetails = (Person)model.getValueAt(selectedRowIndex, 0);
-        if (((chkPatientName == 0) && (chkPatientID == 0) && (chkDoctorName == 0))){
+        Person selectedPersonDetails = (Person) model.getValueAt(selectedRowIndex, 0);
+        if (((chkPatientName == 0) && (chkPatientID == 0) && (chkDoctorName == 0))) {
             Patient pa = patientDirectory.addPatient();
             pa.setName(selectedPersonDetails.getName());
             pa.setAge(selectedPersonDetails.getAge());
@@ -889,32 +905,32 @@ public class PersonJPanel extends javax.swing.JPanel {
             System.out.println(patientDirectory.getPatientDetails());
             JOptionPane.showMessageDialog(null, "Patient Details Added");
         }
-        }
+    }
 
-        private void btnDeletePersonInformationActionPerformed(java.awt.event.ActionEvent evt) {
-            // TODO add your handling code here:
-            //        int selectedRowIndex = tblPersonInformation.getSelectedRow();
-            //        if (selectedRowIndex <0){
-                //            JOptionPane.showMessageDialog(this, "Please Select a row to delete");
-                //            return;
-                //        }
-            //        DefaultTableModel model = (DefaultTableModel) tblPersonInformation.getModel();
-            //        Person selectedCarDetails = (Person)model.getValueAt(selectedRowIndex, 0);
-            //        person.deletePersonDetails(selectedCarDetails);
-            //        JOptionPane.showMessageDialog(this, "Person Details Deleted");
-            //        populatePersonTable();
+    private void btnDeletePersonInformationActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        //        int selectedRowIndex = tblPersonInformation.getSelectedRow();
+        //        if (selectedRowIndex <0){
+        //            JOptionPane.showMessageDialog(this, "Please Select a row to delete");
+        //            return;
+        //        }
+        //        DefaultTableModel model = (DefaultTableModel) tblPersonInformation.getModel();
+        //        Person selectedCarDetails = (Person)model.getValueAt(selectedRowIndex, 0);
+        //        person.deletePersonDetails(selectedCarDetails);
+        //        JOptionPane.showMessageDialog(this, "Person Details Deleted");
+        //        populatePersonTable();
 
     }//GEN-LAST:event_buttonSavePatientActionPerformed
 
     private void buttonAddPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddPatientActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblPersons.getSelectedRow();
-        if (selectedRowIndex <0){
+        if (selectedRowIndex < 0) {
             JOptionPane.showMessageDialog(this, "Please Select a row to add as a Patient");
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblPersons.getModel();
-        Person selectedPersonDetails = (Person)model.getValueAt(selectedRowIndex, 0);
+        Person selectedPersonDetails = (Person) model.getValueAt(selectedRowIndex, 0);
         textPatientName.setText(selectedPersonDetails.getName());
 
     }//GEN-LAST:event_buttonAddPatientActionPerformed
@@ -933,9 +949,7 @@ public class PersonJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> comboCity;
     private javax.swing.JComboBox<String> comboCityUpdate;
     private javax.swing.JComboBox<String> comboCommunity;
-    private javax.swing.JComboBox<String> comboHouse;
     private javax.swing.JComboBox<String> communityComboUpdate;
-    private javax.swing.JComboBox<String> houseComboUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -965,6 +979,8 @@ public class PersonJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textPatientId;
     private javax.swing.JTextField textPatientName;
     private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtHouse;
+    private javax.swing.JTextField txtHouseUpdate;
     private javax.swing.JTextField txtMobile;
     private javax.swing.JTextField txtPerAge;
     private javax.swing.JTextField txtPerId;
@@ -985,7 +1001,7 @@ public class PersonJPanel extends javax.swing.JPanel {
             row[0] = p;
             row[1] = p.getPersonId();
             row[2] = p.getAge();
-         
+
             row[3] = p.getGender();
             row[4] = p.getMobile();
             row[5] = p.getCity().getCityName();
@@ -1004,9 +1020,8 @@ public class PersonJPanel extends javax.swing.JPanel {
         txtPerId.setText("");
         txtPerMobile.setText("");
         ComboPerGender.setSelectedIndex(0);
-        
-        //txtPerAddress.setText("");
 
+        //txtPerAddress.setText("");
     }
 
     public void setHouseAllProperties() {
@@ -1051,7 +1066,7 @@ public class PersonJPanel extends javax.swing.JPanel {
     }
 
     private void cityUpdateAction(String selectedCity, String type) {
-            
+
         if (selectedCity.equals("Boston")) {
             if (type.equals("new")) {
                 comboCommunity.removeAllItems();
@@ -1082,64 +1097,63 @@ public class PersonJPanel extends javax.swing.JPanel {
 
     }
 
-    private void communityUpdateAction(String selectedCommunity, String type) {
-            
-        if (selectedCommunity != null) {
-            if (type.equals("new")) {
-                if (selectedCommunity.equals("Huntington Avenue")) {
-                    comboHouse.removeAllItems();
-                    comboHouse.addItem("100");
-                    comboHouse.addItem("101");
-
-                }
-                if (selectedCommunity.equals("Brookline")) {
-                    comboHouse.removeAllItems();
-                    comboHouse.addItem("102");
-                    comboHouse.addItem("103");
-
-                }
-                if (selectedCommunity.equals("Times Square")) {
-                    comboHouse.removeAllItems();
-                    comboHouse.addItem("104");
-                    comboHouse.addItem("105");
-
-                }
-                if (selectedCommunity.equals("Manhattan")) {
-                    comboHouse.removeAllItems();
-                    comboHouse.addItem("106");
-                    comboHouse.addItem("107");
-
-                }
-            } else {
-                if (selectedCommunity.equals("Huntington Avenue")) {
-                    houseComboUpdate.removeAllItems();
-                    houseComboUpdate.addItem("100");
-                    houseComboUpdate.addItem("101");
-
-                }
-                if (selectedCommunity.equals("Brookline")) {
-                    houseComboUpdate.removeAllItems();
-                    houseComboUpdate.addItem("102");
-                    houseComboUpdate.addItem("103");
-
-                }
-                if (selectedCommunity.equals("Times Square")) {
-                    houseComboUpdate.removeAllItems();
-                    houseComboUpdate.addItem("104");
-                    houseComboUpdate.addItem("105");
-
-                }
-                if (selectedCommunity.equals("Manhattan")) {
-                    houseComboUpdate.removeAllItems();
-                    houseComboUpdate.addItem("106");
-                    houseComboUpdate.addItem("107");
-
-                }
-
-            }
-        }
-
-
-    }
-
+//    private void communityUpdateAction(String selectedCommunity, String type) {
+//            
+//        if (selectedCommunity != null) {
+//            if (type.equals("new")) {
+//                if (selectedCommunity.equals("Huntington Avenue")) {
+//                    comboHouse.removeAllItems();
+//                    comboHouse.addItem("100");
+//                    comboHouse.addItem("101");
+//
+//                }
+//                if (selectedCommunity.equals("Brookline")) {
+//                    comboHouse.removeAllItems();
+//                    comboHouse.addItem("102");
+//                    comboHouse.addItem("103");
+//
+//                }
+//                if (selectedCommunity.equals("Times Square")) {
+//                    comboHouse.removeAllItems();
+//                    comboHouse.addItem("104");
+//                    comboHouse.addItem("105");
+//
+//                }
+//                if (selectedCommunity.equals("Manhattan")) {
+//                    comboHouse.removeAllItems();
+//                    comboHouse.addItem("106");
+//                    comboHouse.addItem("107");
+//
+//                }
+//            } else {
+//                if (selectedCommunity.equals("Huntington Avenue")) {
+//                    houseComboUpdate.removeAllItems();
+//                    houseComboUpdate.addItem("100");
+//                    houseComboUpdate.addItem("101");
+//
+//                }
+//                if (selectedCommunity.equals("Brookline")) {
+//                    houseComboUpdate.removeAllItems();
+//                    houseComboUpdate.addItem("102");
+//                    houseComboUpdate.addItem("103");
+//
+//                }
+//                if (selectedCommunity.equals("Times Square")) {
+//                    houseComboUpdate.removeAllItems();
+//                    houseComboUpdate.addItem("104");
+//                    houseComboUpdate.addItem("105");
+//
+//                }
+//                if (selectedCommunity.equals("Manhattan")) {
+//                    houseComboUpdate.removeAllItems();
+//                    houseComboUpdate.addItem("106");
+//                    houseComboUpdate.addItem("107");
+//
+//                }
+//
+//            }
+//        }
+//
+//
+//    }
 }
