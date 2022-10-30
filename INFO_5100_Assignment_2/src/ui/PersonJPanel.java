@@ -255,7 +255,7 @@ public class PersonJPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(ComboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(618, Short.MAX_VALUE))
+                .addContainerGap(594, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -713,7 +713,7 @@ public class PersonJPanel extends javax.swing.JPanel {
         // if (isValid) {
         selectedPerson.setAge(Integer.parseInt(ageTemp));
 
-        //  selectedPerson.setName(name);
+          selectedPerson.setName(name);
         //selectedPerson.setPersonId(Integer.parseInt(personId));
         selectedPerson.setGender(gender);
         selectedPerson.setMobile(Long.parseLong(phone));
@@ -785,7 +785,6 @@ public class PersonJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_comboCommunityActionPerformed
 
     private void comboCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCityActionPerformed
-
         //new code start
         // String selectedCity = comboCity.getSelectedItem().toString();
         //cityUpdateAction(selectedCity, "new");

@@ -153,19 +153,23 @@
                           <Component id="textDocName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPatientID" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="txtPerId" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAge1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtPerAge" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPatientID" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="txtPerId" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAge1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblGender1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="ComboPerGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="lblMobile1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="txtPerMobile" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblGender1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="ComboPerGender" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>

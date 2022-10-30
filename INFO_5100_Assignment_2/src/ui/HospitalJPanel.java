@@ -287,7 +287,6 @@ public class HospitalJPanel extends javax.swing.JPanel {
 
         jlabel2.setText("City :");
 
-        cityNameUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston", "New York" }));
         cityNameUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityNameUpdateActionPerformed(evt);
@@ -295,6 +294,12 @@ public class HospitalJPanel extends javax.swing.JPanel {
         });
 
         jLabel8.setText("Community :");
+
+        communityNameUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                communityNameUpdateActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Doctor :");
 
@@ -449,14 +454,45 @@ displayHospitals();
         Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 0);
         doctorNameUpdate.setText(selectedHospital.getName());
         hospitalNameUpdate.setText(selectedHospital.getHospitalName());
+        
+         cityNameUpdate.addItem("Select a city");
+
+            for (String city : cityList) {
+                cityNameUpdate.addItem(city);
+
+            }
+
+            setCommunityAllProperties();
+        
+        
         cityNameUpdate.setSelectedItem(selectedHospital.getCity().getCityName());
         communityNameUpdate.setSelectedItem(selectedHospital.getCommunity().getCommunityName());
     }//GEN-LAST:event_btnViewHospitalActionPerformed
 
     private void cityNameUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityNameUpdateActionPerformed
         // TODO add your handling code here:
-        String selectedCity = hospitalCityCombo.getSelectedItem().toString();
+       // String selectedCity = hospitalCityCombo.getSelectedItem().toString();
         //cityUpdateAction(selectedCity, "update");
+//JospitalJpanel for  City        
+        for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+
+            if (cityNameUpdate.getSelectedItem() != null) {
+
+                if (cityNameUpdate.getSelectedItem().equals(entry.getKey())) {
+                    ArrayList<String> list = entry.getValue();
+                    communityNameUpdate.removeAllItems();
+
+                    for (String community : list) {
+                        communityNameUpdate.addItem(community);
+                    }
+
+                }
+
+            }
+
+        }
+        
+        
     }//GEN-LAST:event_cityNameUpdateActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -508,6 +544,10 @@ displayHospitals();
         }
         
     }//GEN-LAST:event_hospitalCityComboActionPerformed
+
+    private void communityNameUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityNameUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_communityNameUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
