@@ -13,7 +13,7 @@ import model.CommunityHistory;
 
 /**
  *
- * @author shobhitsrivastava
+ * @author Rishab Agarwal
  */
 public class CommunityPanel extends javax.swing.JPanel {
 

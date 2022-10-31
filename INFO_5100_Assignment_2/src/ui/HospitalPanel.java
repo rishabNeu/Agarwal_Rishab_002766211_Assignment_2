@@ -19,7 +19,7 @@ import model.Person;
 
 /**
  *
- * @author shobhitsrivastava
+ * @author Rishab Agarwal
  */
 public class HospitalPanel extends javax.swing.JPanel {
 

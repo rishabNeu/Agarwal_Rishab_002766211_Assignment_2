@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author shobhitsrivastava
+ * @author Rishab Agarwal
  */
 public class Vitals {
  private Encounter encounter;

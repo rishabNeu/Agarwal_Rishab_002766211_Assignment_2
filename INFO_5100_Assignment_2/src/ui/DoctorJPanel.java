@@ -20,7 +20,7 @@ import model.Vitals;
 
 /**
  *
- * @author shobhitsrivastava
+ * @author Rishab Agarwal
  */
 public class DoctorJPanel extends javax.swing.JPanel {
 

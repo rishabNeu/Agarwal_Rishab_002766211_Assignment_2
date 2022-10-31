@@ -16,7 +16,7 @@ import model.VitalHistory;
 
 /**
  *
- * @author shobhitsrivastava
+ * @author Rishab Agarwal
  */
 public class CrudPanel extends javax.swing.JFrame {
 

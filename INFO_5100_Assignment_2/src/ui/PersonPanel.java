@@ -23,7 +23,7 @@ import model.Person;
 
 /**
  *
- * @author shobhitsrivastava
+ * @author Rishab Agarwal
  */
 public class PersonPanel extends javax.swing.JPanel {
 
