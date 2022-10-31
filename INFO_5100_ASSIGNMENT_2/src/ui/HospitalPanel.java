@@ -142,11 +142,15 @@ public class HospitalPanel extends javax.swing.JPanel {
         btnDeleteHospital = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
         jLabel1.setText("Hospital Id");
 
@@ -163,11 +167,17 @@ public class HospitalPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 hospitalIdKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hospitalIdKeyTyped(evt);
+            }
         });
 
         hospitalName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 hospitalNameKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                hospitalNameKeyTyped(evt);
             }
         });
 
@@ -190,11 +200,17 @@ public class HospitalPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 doctorIdKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                doctorIdKeyTyped(evt);
+            }
         });
 
         doctorName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 doctorNameKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                doctorNameKeyTyped(evt);
             }
         });
 
@@ -211,33 +227,42 @@ public class HospitalPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 258, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(329, 329, 329))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(116, 116, 116)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(hospitalName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hospitalCityCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 242, Short.MAX_VALUE)
-                            .addComponent(hospitalCommunityCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(doctorId, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(doctorName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hospitalId)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(427, 427, 427)
-                        .addComponent(btnCreateHospital)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(258, 258, 258)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel1)
+                .addGap(138, 138, 138)
+                .addComponent(hospitalId, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel2)
+                .addGap(116, 116, 116)
+                .addComponent(hospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel3)
+                .addGap(176, 176, 176)
+                .addComponent(hospitalCityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel4)
+                .addGap(135, 135, 135)
+                .addComponent(hospitalCommunityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel6)
+                .addGap(146, 146, 146)
+                .addComponent(doctorId, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel7)
+                .addGap(124, 124, 124)
+                .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(427, 427, 427)
+                .addComponent(btnCreateHospital))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,38 +270,51 @@ public class HospitalPanel extends javax.swing.JPanel {
                 .addGap(52, 52, 52)
                 .addComponent(jLabel5)
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hospitalId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1))
+                    .addComponent(hospitalId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2))
                     .addComponent(hospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel3))
                     .addComponent(hospitalCityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel4))
                     .addComponent(hospitalCommunityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel6))
                     .addComponent(doctorId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel7))
                     .addComponent(doctorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(65, 65, 65)
-                .addComponent(btnCreateHospital)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addComponent(btnCreateHospital))
         );
 
         jTabbedPane1.addTab("CREATE", jPanel1);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
+        hospitalTable.setAutoCreateRowSorter(true);
+        hospitalTable.setBackground(new java.awt.Color(242, 242, 242));
         hospitalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -290,30 +328,19 @@ public class HospitalPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(hospitalTable);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 993, 292));
-
         jlabel.setText("Hospital");
-        jPanel2.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 400, -1, -1));
-        jPanel2.add(hospitalNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 389, 247, -1));
 
         jlabel2.setText("City");
-        jPanel2.add(jlabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 446, -1, -1));
 
         jLabel8.setText("Community");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 500, -1, -1));
 
         jLabel9.setText("Doctor");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 557, -1, -1));
-
-        jPanel2.add(communityNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 486, 247, -1));
 
         cityNameUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityNameUpdateActionPerformed(evt);
             }
         });
-        jPanel2.add(cityNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 430, 247, -1));
-        jPanel2.add(doctorNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 551, 247, -1));
 
         btnViewHospital.setText("View");
         btnViewHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -321,7 +348,6 @@ public class HospitalPanel extends javax.swing.JPanel {
                 btnViewHospitalActionPerformed(evt);
             }
         });
-        jPanel2.add(btnViewHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 333, -1, -1));
 
         btnDeleteHospital.setText("Delete");
         btnDeleteHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +355,6 @@ public class HospitalPanel extends javax.swing.JPanel {
                 btnDeleteHospitalActionPerformed(evt);
             }
         });
-        jPanel2.add(btnDeleteHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 324, -1, -1));
 
         jButton4.setText("Update");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -337,25 +362,85 @@ public class HospitalPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 626, -1, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 993, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(btnViewHospital)
+                .addGap(409, 409, 409)
+                .addComponent(btnDeleteHospital))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(287, 287, 287)
+                .addComponent(jlabel)
+                .addGap(116, 116, 116)
+                .addComponent(hospitalNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(287, 287, 287)
+                .addComponent(jlabel2)
+                .addGap(141, 141, 141)
+                .addComponent(cityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(287, 287, 287)
+                .addComponent(jLabel8)
+                .addGap(100, 100, 100)
+                .addComponent(communityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(287, 287, 287)
+                .addComponent(jLabel9)
+                .addGap(124, 124, 124)
+                .addComponent(doctorNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(474, 474, 474)
+                .addComponent(jButton4))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(btnViewHospital))
+                    .addComponent(btnDeleteHospital))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jlabel))
+                    .addComponent(hospitalNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jlabel2))
+                    .addComponent(cityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel8))
+                    .addComponent(communityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel9))
+                    .addComponent(doctorNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
+                .addComponent(jButton4))
+        );
 
         jTabbedPane1.addTab("VIEW", jPanel2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 999, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 27, Short.MAX_VALUE))
-        );
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 1030, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospitalActionPerformed
@@ -546,35 +631,55 @@ public class HospitalPanel extends javax.swing.JPanel {
 
     private void hospitalIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hospitalIdKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isDigit(value))){
-            evt.consume();
-        }
+         
     }//GEN-LAST:event_hospitalIdKeyPressed
 
     private void hospitalNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hospitalNameKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isAlphabetic(value))){
-            evt.consume();
-        }
+        
     }//GEN-LAST:event_hospitalNameKeyPressed
 
     private void doctorIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_doctorIdKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isDigit(value))){
-            evt.consume();
-        }
+       
     }//GEN-LAST:event_doctorIdKeyPressed
 
     private void doctorNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_doctorNameKeyPressed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_doctorNameKeyPressed
+
+    private void hospitalIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hospitalIdKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_hospitalIdKeyTyped
+
+    private void hospitalNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hospitalNameKeyTyped
         // TODO add your handling code here:
            char value = evt.getKeyChar();
         if((!Character.isAlphabetic(value))){
             evt.consume();
         }
-    }//GEN-LAST:event_doctorNameKeyPressed
+    }//GEN-LAST:event_hospitalNameKeyTyped
+
+    private void doctorIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_doctorIdKeyTyped
+        // TODO add your handling code here:
+            char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_doctorIdKeyTyped
+
+    private void doctorNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_doctorNameKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_doctorNameKeyTyped
 
     public void cityUpdateAction(String selectedCity, String type) {
         System.out.println("Selected City" + selectedCity);

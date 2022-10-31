@@ -80,9 +80,14 @@ public class CommunityPanel extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("City Name");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 115, -1, -1));
 
         jLabel2.setText("Community Name");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 176, -1, -1));
 
         cityField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +98,11 @@ public class CommunityPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cityFieldKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cityFieldKeyTyped(evt);
+            }
         });
+        jPanel1.add(cityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 112, 174, -1));
 
         communityField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +113,11 @@ public class CommunityPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 communityFieldKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                communityFieldKeyTyped(evt);
+            }
         });
+        jPanel1.add(communityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(422, 173, 174, -1));
 
         btnCreateCommunity.setText("CREATE");
         btnCreateCommunity.addActionListener(new java.awt.event.ActionListener() {
@@ -112,53 +125,18 @@ public class CommunityPanel extends javax.swing.JPanel {
                 btnCreateCommunityActionPerformed(evt);
             }
         });
+        jPanel1.add(btnCreateCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 254, 124, 32));
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel8.setText("MANAGE COMMUNITY");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(107, 107, 107)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(communityField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(322, 322, 322)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(btnCreateCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(419, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel8)
-                .addGap(59, 59, 59)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(communityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addComponent(btnCreateCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(740, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 29, -1, -1));
 
         jTabbedPane1.addTab("CREATE", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        communityTableModel.setBackground(new java.awt.Color(242, 242, 242));
         communityTableModel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -172,21 +150,35 @@ public class CommunityPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(communityTableModel);
 
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 943, 285));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel4.setText("City Name");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 135, -1, -1));
 
         jLabel5.setText("Community Name");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 207, -1, -1));
 
         cityFieldUpdate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cityFieldUpdateKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cityFieldUpdateKeyTyped(evt);
+            }
         });
+        jPanel3.add(cityFieldUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 132, 174, -1));
 
         communityFieldUpdate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 communityFieldUpdateKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                communityFieldUpdateKeyTyped(evt);
+            }
         });
+        jPanel3.add(communityFieldUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 204, 174, -1));
 
         btnUpdateCommunity.setText("UPDATE");
         btnUpdateCommunity.addActionListener(new java.awt.event.ActionListener() {
@@ -194,9 +186,11 @@ public class CommunityPanel extends javax.swing.JPanel {
                 btnUpdateCommunityActionPerformed(evt);
             }
         });
+        jPanel3.add(btnUpdateCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 272, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel7.setText("UPDATE");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 73, 163, -1));
 
         btnViewCommunity.setText("View");
         btnViewCommunity.addActionListener(new java.awt.event.ActionListener() {
@@ -204,6 +198,7 @@ public class CommunityPanel extends javax.swing.JPanel {
                 btnViewCommunityActionPerformed(evt);
             }
         });
+        jPanel3.add(btnViewCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 0, 96, 29));
 
         btnDeleteCommunity.setText("Delete");
         btnDeleteCommunity.addActionListener(new java.awt.event.ActionListener() {
@@ -211,78 +206,9 @@ public class CommunityPanel extends javax.swing.JPanel {
                 btnDeleteCommunityActionPerformed(evt);
             }
         });
+        jPanel3.add(btnDeleteCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 0, 100, 29));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnDeleteCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4)
-                            .addComponent(btnViewCommunity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(66, 66, 66)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cityFieldUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .addComponent(communityFieldUpdate)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(btnUpdateCommunity)))
-                .addContainerGap(245, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDeleteCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(jLabel7)
-                .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cityFieldUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(communityFieldUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(btnUpdateCommunity)
-                .addContainerGap(157, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addGap(66, 66, 66))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(277, 277, 277))
-        );
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
 
         jTabbedPane1.addTab("VIEW", jPanel2);
 
@@ -420,35 +346,55 @@ public class CommunityPanel extends javax.swing.JPanel {
 
     private void cityFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityFieldKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isAlphabetic(value))){
-            evt.consume();
-        }
+         
     }//GEN-LAST:event_cityFieldKeyPressed
 
     private void communityFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_communityFieldKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isAlphabetic(value))){
-            evt.consume();
-        }
+         
     }//GEN-LAST:event_communityFieldKeyPressed
 
     private void cityFieldUpdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityFieldUpdateKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isAlphabetic(value))){
-            evt.consume();
-        }
+           
     }//GEN-LAST:event_cityFieldUpdateKeyPressed
 
     private void communityFieldUpdateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_communityFieldUpdateKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
+         
+    }//GEN-LAST:event_communityFieldUpdateKeyPressed
+
+    private void cityFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityFieldKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
         if((!Character.isAlphabetic(value))){
             evt.consume();
         }
-    }//GEN-LAST:event_communityFieldUpdateKeyPressed
+    }//GEN-LAST:event_cityFieldKeyTyped
+
+    private void communityFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_communityFieldKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_communityFieldKeyTyped
+
+    private void cityFieldUpdateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityFieldUpdateKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_cityFieldUpdateKeyTyped
+
+    private void communityFieldUpdateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_communityFieldUpdateKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_communityFieldUpdateKeyTyped
 
     private void displayCommunity() {
         System.out.println("Inside community");

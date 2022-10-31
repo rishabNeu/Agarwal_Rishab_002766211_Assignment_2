@@ -163,9 +163,9 @@ public class DoctorJPanel extends javax.swing.JPanel {
         buttonEdit = new javax.swing.JButton();
         buttonAddVitals = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        penelVitalSigns.setBackground(new java.awt.Color(255, 255, 255));
         penelVitalSigns.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelVitalSigns.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -231,7 +231,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 40));
 
         tblPatientInfo.setAutoCreateRowSorter(true);
-        tblPatientInfo.setBackground(new java.awt.Color(204, 204, 255));
+        tblPatientInfo.setBackground(new java.awt.Color(242, 242, 242));
         tblPatientInfo.setForeground(new java.awt.Color(0, 51, 51));
         tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -247,9 +247,9 @@ public class DoctorJPanel extends javax.swing.JPanel {
         tblPatientInfo.setToolTipText("");
         jScrollPane1.setViewportView(tblPatientInfo);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 620, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 620, 90));
 
-        tableEncounter.setBackground(new java.awt.Color(204, 204, 255));
+        tableEncounter.setBackground(new java.awt.Color(242, 242, 242));
         tableEncounter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -263,7 +263,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tableEncounter);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 620, 90));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 620, 90));
 
         buttonRefresh.setText("Refresh");
         buttonRefresh.addActionListener(new java.awt.event.ActionListener() {

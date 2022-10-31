@@ -164,18 +164,29 @@ public class PersonPanel extends javax.swing.JPanel {
             }
         });
 
+        createPersonPanel.setBackground(new java.awt.Color(51, 153, 255));
+        createPersonPanel.setForeground(new java.awt.Color(242, 242, 242));
+        createPersonPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("MANAGE PERSON");
+        createPersonPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 19, 290, -1));
 
         jLabel2.setText("NAME");
+        createPersonPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 169, 132, 27));
 
         personName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 personNameKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                personNameKeyTyped(evt);
+            }
         });
+        createPersonPanel.add(personName, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 164, 241, 36));
 
         jLabel3.setText("ID");
+        createPersonPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 126, -1, -1));
 
         personId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,9 +197,14 @@ public class PersonPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 personIdKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                personIdKeyTyped(evt);
+            }
         });
+        createPersonPanel.add(personId, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 117, 241, 35));
 
         jLabel4.setText("AGE");
+        createPersonPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 227, -1, -1));
 
         personAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,21 +215,38 @@ public class PersonPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 personAgeKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                personAgeKeyTyped(evt);
+            }
         });
+        createPersonPanel.add(personAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 218, 241, 34));
 
         jLabel5.setText("GENDER");
+        createPersonPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 284, -1, -1));
 
         personGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE" }));
+        createPersonPanel.add(personGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 275, 241, 34));
 
         jLabel6.setText("HOUSE");
+        createPersonPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 480, -1, -1));
 
         jLabel7.setText("PHONE");
+        createPersonPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 537, -1, -1));
 
         personPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 personPhoneActionPerformed(evt);
             }
         });
+        personPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                personPhoneKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                personPhoneKeyTyped(evt);
+            }
+        });
+        createPersonPanel.add(personPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 527, 241, 37));
 
         jButton1.setText("CREATE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -221,8 +254,10 @@ public class PersonPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        createPersonPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 602, 134, 31));
 
         jLabel10.setText("CITY");
+        createPersonPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 346, -1, -1));
 
         comboCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,104 +269,39 @@ public class PersonPanel extends javax.swing.JPanel {
                 comboCityPropertyChange(evt);
             }
         });
+        comboCity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboCityKeyPressed(evt);
+            }
+        });
+        createPersonPanel.add(comboCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 335, 241, 39));
 
         jLabel15.setText("COMMUNITY");
+        createPersonPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 413, -1, -1));
 
         comboCommunity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCommunityActionPerformed(evt);
             }
         });
+        createPersonPanel.add(comboCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 398, 241, 41));
 
         houseAddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 houseAddressKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                houseAddressKeyTyped(evt);
+            }
         });
-
-        javax.swing.GroupLayout createPersonPanelLayout = new javax.swing.GroupLayout(createPersonPanel);
-        createPersonPanel.setLayout(createPersonPanelLayout);
-        createPersonPanelLayout.setHorizontalGroup(
-            createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createPersonPanelLayout.createSequentialGroup()
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(createPersonPanelLayout.createSequentialGroup()
-                            .addGap(299, 299, 299)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(createPersonPanelLayout.createSequentialGroup()
-                            .addGap(233, 233, 233)
-                            .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel15))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                            .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(personName)
-                                .addComponent(personId)
-                                .addComponent(personAge)
-                                .addComponent(personGender, 0, 241, Short.MAX_VALUE)
-                                .addComponent(personPhone)
-                                .addComponent(comboCity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(comboCommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(houseAddress))))
-                    .addGroup(createPersonPanelLayout.createSequentialGroup()
-                        .addGap(348, 348, 348)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(514, Short.MAX_VALUE))
-        );
-        createPersonPanelLayout.setVerticalGroup(
-            createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createPersonPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addGap(66, 66, 66)
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(personId, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(personAge, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(personGender, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(comboCity, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(createPersonPanelLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel15))
-                    .addGroup(createPersonPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(comboCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(houseAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(createPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(personPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
+        createPersonPanel.add(houseAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 477, 241, -1));
 
         personTabs.addTab("CREATE", createPersonPanel);
 
+        viewPersonPanel.setBackground(new java.awt.Color(51, 153, 255));
+        viewPersonPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        personTable.setBackground(new java.awt.Color(242, 242, 242));
         personTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -345,32 +315,47 @@ public class PersonPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(personTable);
 
+        viewPersonPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 18, 1131, 261));
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel8.setText("UPDATE PERSON");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 0, 290, -1));
 
         jLabel9.setText("NAME");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 61, 132, 27));
+        jPanel3.add(personNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 56, 241, 36));
 
         jLabel11.setText("AGE");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 117, -1, -1));
 
         personAgeUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 personAgeUpdateActionPerformed(evt);
             }
         });
+        jPanel3.add(personAgeUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 108, 241, 34));
 
         jLabel12.setText("GENDER");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 169, -1, -1));
 
         personGenderUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE" }));
+        jPanel3.add(personGenderUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 160, 241, 34));
 
         jLabel13.setText("CITY");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 211, -1, -1));
 
         jLabel14.setText("PHONE");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 359, -1, -1));
 
         personPhoneUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 personPhoneUpdateActionPerformed(evt);
             }
         });
+        jPanel3.add(personPhoneUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 350, 241, 34));
 
         personUpdateButton.setText("UPDATE");
         personUpdateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -378,6 +363,7 @@ public class PersonPanel extends javax.swing.JPanel {
                 personUpdateButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(personUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 396, 134, 31));
 
         communityComboUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,6 +375,7 @@ public class PersonPanel extends javax.swing.JPanel {
                 communityComboUpdatePropertyChange(evt);
             }
         });
+        jPanel3.add(communityComboUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 249, 241, 39));
 
         cityComboUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,11 +387,15 @@ public class PersonPanel extends javax.swing.JPanel {
                 cityComboUpdatePropertyChange(evt);
             }
         });
+        jPanel3.add(cityComboUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 200, 241, 39));
 
         jLabel16.setText("COMMUNITY");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 264, -1, -1));
 
         jLabel17.setText("HOUSE");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
 
+        patientTable.setBackground(new java.awt.Color(242, 242, 242));
         patientTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -418,104 +409,14 @@ public class PersonPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(patientTable);
 
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 93, 689, 253));
+
         jLabel18.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel18.setText("PATIENTS");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 51, 204, -1));
+        jPanel3.add(editHouseAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 310, 241, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(personAgeUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(personNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(personGenderUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel13)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cityComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(communityComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
-                                .addComponent(jLabel17))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(personUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(personPhoneUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                .addComponent(editHouseAddress))))
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(218, 218, 218))))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel8)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(personNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(personAgeUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(personGenderUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cityComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel16)
-                        .addGap(153, 153, 153))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(communityComboUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addGap(34, 34, 34))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(editHouseAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(personPhoneUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(personUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(87, 87, 87))))))
-        );
+        viewPersonPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 326, -1, 429));
 
         buttonViewPerson.setText("VIew");
         buttonViewPerson.addActionListener(new java.awt.event.ActionListener() {
@@ -523,6 +424,7 @@ public class PersonPanel extends javax.swing.JPanel {
                 buttonViewPersonActionPerformed(evt);
             }
         });
+        viewPersonPanel.add(buttonViewPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 285, -1, -1));
 
         buttonDeletePerson.setText("Delete");
         buttonDeletePerson.addActionListener(new java.awt.event.ActionListener() {
@@ -530,6 +432,7 @@ public class PersonPanel extends javax.swing.JPanel {
                 buttonDeletePersonActionPerformed(evt);
             }
         });
+        viewPersonPanel.add(buttonDeletePerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(439, 285, -1, -1));
 
         addPatient.setText("Add Patient");
         addPatient.addActionListener(new java.awt.event.ActionListener() {
@@ -537,42 +440,7 @@ public class PersonPanel extends javax.swing.JPanel {
                 addPatientActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout viewPersonPanelLayout = new javax.swing.GroupLayout(viewPersonPanel);
-        viewPersonPanel.setLayout(viewPersonPanelLayout);
-        viewPersonPanelLayout.setHorizontalGroup(
-            viewPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewPersonPanelLayout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(buttonViewPerson)
-                .addGap(124, 124, 124)
-                .addComponent(buttonDeletePerson)
-                .addGap(136, 136, 136)
-                .addComponent(addPatient)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(viewPersonPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(viewPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(viewPersonPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 3, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        viewPersonPanelLayout.setVerticalGroup(
-            viewPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewPersonPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(viewPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(viewPersonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buttonViewPerson)
-                        .addComponent(buttonDeletePerson)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 428, Short.MAX_VALUE))
-        );
+        viewPersonPanel.add(addPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 285, -1, 23));
 
         personTabs.addTab("VIEW", viewPersonPanel);
 
@@ -935,35 +803,72 @@ public class PersonPanel extends javax.swing.JPanel {
 
     private void personIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personIdKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isDigit(value))){
-            evt.consume();
-        }
+         
     }//GEN-LAST:event_personIdKeyPressed
 
     private void personNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personNameKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isAlphabetic(value))){
-            evt.consume();
-        }
+           
     }//GEN-LAST:event_personNameKeyPressed
 
     private void personAgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personAgeKeyPressed
         // TODO add your handling code here:
-           char value = evt.getKeyChar();
-        if((!Character.isDigit(value))){
-            evt.consume();
-        }
+         
     }//GEN-LAST:event_personAgeKeyPressed
 
     private void houseAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_houseAddressKeyPressed
         // TODO add your handling code here:
-            char value = evt.getKeyChar();
+          
+    }//GEN-LAST:event_houseAddressKeyPressed
+
+    private void personIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personIdKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_personIdKeyTyped
+
+    private void personNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personNameKeyTyped
+        // TODO add your handling code here:
+        char value = evt.getKeyChar();
         if((!Character.isAlphabetic(value))){
             evt.consume();
         }
-    }//GEN-LAST:event_houseAddressKeyPressed
+    }//GEN-LAST:event_personNameKeyTyped
+
+    private void personAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personAgeKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_personAgeKeyTyped
+
+    private void comboCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboCityKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCityKeyPressed
+
+    private void houseAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_houseAddressKeyTyped
+        // TODO add your handling code here:
+          char value = evt.getKeyChar();
+        if((!Character.isAlphabetic(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_houseAddressKeyTyped
+
+    private void personPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personPhoneKeyTyped
+        // TODO add your handling code here:
+        
+         char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_personPhoneKeyTyped
+
+    private void personPhoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personPhoneKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personPhoneKeyPressed
 
     private String getPatientCommunityDoctor(String community) {
         String docName = null;
