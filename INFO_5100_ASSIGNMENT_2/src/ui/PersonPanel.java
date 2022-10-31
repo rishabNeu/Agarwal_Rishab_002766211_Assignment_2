@@ -792,6 +792,7 @@ public class PersonPanel extends javax.swing.JPanel {
            pa.setDoctorName(doctor);
            pa.setAge(selectedPersonDetails.getAge());
            pa.setCity(new City(selectedPersonDetails.getCity().getcityName()));
+           pa.setGender(selectedPersonDetails.getGender());
            pa.setCommunity(new Community(selectedPersonDetails.getCommunity().getCommunityName()));
            pa.setPhone(selectedPersonDetails.getPhone());
            pa.setHouse(new House(selectedPersonDetails.getHouse().getAddress()));

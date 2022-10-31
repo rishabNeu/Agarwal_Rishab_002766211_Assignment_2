@@ -107,7 +107,7 @@ public class CrudPanel extends javax.swing.JFrame {
             manageDoctor.setVisible(true);
             managePatient.setVisible(true);
             manageEncounter.setVisible(true);
-            searchPatient.setVisible(false);
+            searchPatient.setVisible(true);
             PersonPanel panel = new PersonPanel(personDirectory, communityHistory, patientDirectory, hospitalDirectory, userRole);
             jSplitPaneCrud.setRightComponent(panel);
         } else if (userRole == "Doctor") {

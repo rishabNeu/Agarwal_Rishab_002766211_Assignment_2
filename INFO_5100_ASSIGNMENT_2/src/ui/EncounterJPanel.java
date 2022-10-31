@@ -184,7 +184,7 @@ public class EncounterJPanel extends javax.swing.JPanel {
                 txtPerAgeKeyTyped(evt);
             }
         });
-        jPanel1.add(txtPerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(478, 369, 117, -1));
+        jPanel1.add(txtPerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 117, -1));
 
         lblGender1.setText("Gender :");
         jPanel1.add(lblGender1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 463, 99, 32));
@@ -252,6 +252,7 @@ public class EncounterJPanel extends javax.swing.JPanel {
         txtPerName.setText(selectedPerson.getName());
         txtPerAge.setText(String.valueOf(selectedPerson.getAge()));
 
+        
         int index = 0;
         if (selectedPerson.getGender().equalsIgnoreCase("male")) {
             index = 1;
@@ -287,6 +288,30 @@ public class EncounterJPanel extends javax.swing.JPanel {
 
     private void btnUpdatePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePatientActionPerformed
         // TODO add your handling code here:
+         int selectRowIndex = tblPatient.getSelectedRow();
+
+
+
+       if (selectRowIndex < 0) {
+            JOptionPane.showConfirmDialog(this, "Please select a row to view the data");
+            return;
+        }
+
+
+
+       DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
+        Patient selectedPerson = (Patient) model.getValueAt(selectRowIndex, 0);
+        try {
+          selectedPerson.setAge(Integer.parseInt(txtPerAge.getText()));
+          selectedPerson.setName(txtPerName.getText());
+          selectedPerson.setGender(ComboPerGender.getSelectedItem().toString());
+          selectedPerson.setPhone(Integer.parseInt(txtPerMobile.getText()));
+          JOptionPane.showMessageDialog(this, "Encounter Details Updated");
+          populatePatientTable();
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+            JOptionPane.showMessageDialog(this, "Please provide correct values");
+        }
     }//GEN-LAST:event_btnUpdatePatientActionPerformed
 
     private void txtPerNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPerNameKeyTyped
