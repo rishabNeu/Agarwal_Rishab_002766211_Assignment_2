@@ -320,7 +320,7 @@ public class PersonPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(0, 153, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel8.setText("UPDATE PERSON");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 0, 290, -1));
 
@@ -363,7 +363,7 @@ public class PersonPanel extends javax.swing.JPanel {
                 personUpdateButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(personUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 396, 134, 31));
+        jPanel3.add(personUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 134, 31));
 
         communityComboUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,10 +413,10 @@ public class PersonPanel extends javax.swing.JPanel {
 
         jLabel18.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel18.setText("PATIENTS");
-        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 51, 204, -1));
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 204, -1));
         jPanel3.add(editHouseAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 310, 241, -1));
 
-        viewPersonPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 326, -1, 429));
+        viewPersonPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, 429));
 
         buttonViewPerson.setText("VIew");
         buttonViewPerson.addActionListener(new java.awt.event.ActionListener() {
@@ -450,7 +450,7 @@ public class PersonPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(personTabs)
+                .addComponent(personTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1146, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

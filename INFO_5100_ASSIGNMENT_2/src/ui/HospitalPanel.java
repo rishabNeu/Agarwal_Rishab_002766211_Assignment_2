@@ -312,6 +312,7 @@ public class HospitalPanel extends javax.swing.JPanel {
         jTabbedPane1.addTab("CREATE", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         hospitalTable.setAutoCreateRowSorter(true);
         hospitalTable.setBackground(new java.awt.Color(242, 242, 242));
@@ -328,19 +329,30 @@ public class HospitalPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(hospitalTable);
 
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 993, 292));
+
         jlabel.setText("Hospital");
+        jPanel2.add(jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 400, -1, -1));
+        jPanel2.add(hospitalNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 389, 247, -1));
 
         jlabel2.setText("City");
+        jPanel2.add(jlabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 446, -1, -1));
 
         jLabel8.setText("Community");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 500, -1, -1));
 
         jLabel9.setText("Doctor");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 557, -1, -1));
+
+        jPanel2.add(communityNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 486, 247, -1));
 
         cityNameUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityNameUpdateActionPerformed(evt);
             }
         });
+        jPanel2.add(cityNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 430, 247, -1));
+        jPanel2.add(doctorNameUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(448, 551, 247, -1));
 
         btnViewHospital.setText("View");
         btnViewHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -348,6 +360,7 @@ public class HospitalPanel extends javax.swing.JPanel {
                 btnViewHospitalActionPerformed(evt);
             }
         });
+        jPanel2.add(btnViewHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 333, -1, -1));
 
         btnDeleteHospital.setText("Delete");
         btnDeleteHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -355,6 +368,7 @@ public class HospitalPanel extends javax.swing.JPanel {
                 btnDeleteHospitalActionPerformed(evt);
             }
         });
+        jPanel2.add(btnDeleteHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(682, 324, -1, -1));
 
         jButton4.setText("Update");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -362,81 +376,7 @@ public class HospitalPanel extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 993, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(btnViewHospital)
-                .addGap(409, 409, 409)
-                .addComponent(btnDeleteHospital))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(287, 287, 287)
-                .addComponent(jlabel)
-                .addGap(116, 116, 116)
-                .addComponent(hospitalNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(287, 287, 287)
-                .addComponent(jlabel2)
-                .addGap(141, 141, 141)
-                .addComponent(cityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(287, 287, 287)
-                .addComponent(jLabel8)
-                .addGap(100, 100, 100)
-                .addComponent(communityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(287, 287, 287)
-                .addComponent(jLabel9)
-                .addGap(124, 124, 124)
-                .addComponent(doctorNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(474, 474, 474)
-                .addComponent(jButton4))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(btnViewHospital))
-                    .addComponent(btnDeleteHospital))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jlabel))
-                    .addComponent(hospitalNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jlabel2))
-                    .addComponent(cityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel8))
-                    .addComponent(communityNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel9))
-                    .addComponent(doctorNameUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addComponent(jButton4))
-        );
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 626, -1, -1));
 
         jTabbedPane1.addTab("VIEW", jPanel2);
 

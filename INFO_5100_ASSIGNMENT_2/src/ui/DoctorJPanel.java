@@ -224,9 +224,8 @@ public class DoctorJPanel extends javax.swing.JPanel {
 
         add(penelVitalSigns, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 350, 420));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Avenir Next", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("               PATIENT SUMMARY");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 40));
 
