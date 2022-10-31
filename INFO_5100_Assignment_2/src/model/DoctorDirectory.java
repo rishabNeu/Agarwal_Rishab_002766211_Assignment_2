@@ -3,20 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
 import java.util.ArrayList;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class DoctorDirectory {
-    private ArrayList<Doctor> doctoryHistory;
     
+     
+    private ArrayList<Doctor> doctor;
     
-    public DoctorDirectory()
-    {
-        this.doctoryHistory = new ArrayList<Doctor>();
+    public DoctorDirectory() {
+    
+    this.doctor = new ArrayList<Doctor>();
+    
     }
     
 }

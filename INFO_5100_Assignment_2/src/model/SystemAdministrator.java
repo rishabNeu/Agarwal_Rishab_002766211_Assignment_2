@@ -6,16 +6,45 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class SystemAdministrator {
+
+    public DoctorDirectory getDoctoDirectory() {
+        return doctoDirectory;
+    }
+
+    public void setDoctoDirectory(DoctorDirectory doctoDirectory) {
+        this.doctoDirectory = doctoDirectory;
+    }
+
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
+    }
+
+    public void setPatientDirectory(PatientDirectory patientDirectory) {
+        this.patientDirectory = patientDirectory;
+    }
+
+    public PersonDirectory getPersonDirectory() {
+        return personDirectory;
+    }
+
+    public void setPersonDirectory(PersonDirectory personDirectory) {
+        this.personDirectory = personDirectory;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
     
+    private DoctorDirectory doctoDirectory;
+    private PatientDirectory patientDirectory;
     private PersonDirectory personDirectory;
     private City city;
-    private PatientDirectory  patientDirectory;
-    
-    private DoctorDirectory  doctorDirectory;
-    
-    
     
 }

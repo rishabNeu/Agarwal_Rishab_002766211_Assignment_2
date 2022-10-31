@@ -6,31 +6,36 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class City {
+    
     private String cityName;
     private Community community;
     
-    public String getCityName() {
+    
+    public City(String cityName){
+        this.cityName=cityName;
+    }
+
+    public Community getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(Community community) {
+        this.community = community;
+    }
+
+    public String getcityName() {
         return cityName;
     }
 
-    public void setCityName(String cityName) {
+    public void setcityName(String cityName) {
         this.cityName = cityName;
     }
-
-    public City(String cityName) {
-        this.cityName = cityName;
-        
-    }
-
-    @Override
+     @Override
     public String toString() {
-        return cityName;
+        return String.valueOf(cityName) ;
     }
-
-    
-    
     
 }

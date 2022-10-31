@@ -6,42 +6,23 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class Community {
-
-    public House getHouse() {
-        return house;
-    }
-
-    public Community(House house, String communityName, City city) {
+    
+    
+    public Community(House house, String communityName, City city){
         this.house = house;
-        
         this.communityName = communityName;
         this.city = city;
     }
-
-    public Community(String name)
-    {
-        this.communityName = name;
+    
+    public Community(String communityName){
+        this.communityName = communityName;
     }
     
-    
-     public Community() {
+    public Community(){
         
-    }
-    
-    
-    public void setHouse(House house) {
-        this.house = house;
-    }
-
-    public int getCommuniytId() {
-        return communiytId;
-    }
-
-    public void setCommuniytId(int communiytId) {
-        this.communiytId = communiytId;
     }
 
     public String getCommunityName() {
@@ -52,11 +33,6 @@ public class Community {
         this.communityName = communityName;
     }
 
-    private House house;
-    private int communiytId;
-    private String communityName;
-    private City city;
-
     public City getCity() {
         return city;
     }
@@ -64,9 +40,23 @@ public class Community {
     public void setCity(City city) {
         this.city = city;
     }
+
+    private String communityName;
+    private City city;
+    private House house;
+
+    public House getHouse() {
+        return house;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
+    }
+    
+     @Override
+    public String toString() {
+        return String.valueOf(communityName) ;
+    }
     
     
-
-
-
 }

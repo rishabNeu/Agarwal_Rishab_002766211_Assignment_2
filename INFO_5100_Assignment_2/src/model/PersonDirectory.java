@@ -8,33 +8,35 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class PersonDirectory {
 
-    private ArrayList<Person> personDirectory;
+    private ArrayList<Person> person;
 
     public PersonDirectory() {
-        this.personDirectory = new ArrayList<>();
-    }
 
-    public ArrayList<Person> getPersonDetails() {
-        return personDirectory;
-    }
-
-    public Person addPerson() {
-
-        Person p = new Person();
-        personDirectory.add(p);
-
-        return p;
+        this.person = new ArrayList<Person>();
 
     }
 
-    public void deleteEmployee(Person selectedPerson) {
-
-        personDirectory.remove(selectedPerson);
+    public Person addNewPerson() {
+        Person newPerson = new Person();
+        person.add(newPerson);
+        return newPerson;
 
     }
+    public void setHistory(ArrayList<Person> person) {
+        this.person = person;
+    }
+    
+     public ArrayList<Person> getHistory() {
+        return person;
+    }
+     
+      public void deletePerson(Person p){
+        person.remove(p); 
+    }
+    
 
 }

@@ -4,18 +4,18 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
-public class Patient extends Person{
-      
+public class Patient extends Person {
     
-    private int patientId;
-      private String doctorName;
-    private int bloodSugar;
-    private int pressure;
-    private int temperature;
+    private ArrayList<Encounter> encounterHistory;
+    private PatientDirectory patientDirectory;
+    private Date date;
 
     public int getPatientId() {
         return patientId;
@@ -32,16 +32,53 @@ public class Patient extends Person{
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
     }
-    private int pulseRate;
 
+    public String getBloodSugar() {
+        return bloodSugar;
+    }
+
+    public void setBloodSugar(String bloodSugar) {
+        this.bloodSugar = bloodSugar;
+    }
+
+    public String getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(String pressure) {
+        this.pressure = pressure;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getPulseRate() {
+        return pulseRate;
+    }
+
+    public void setPulseRate(String pulseRate) {
+        this.pulseRate = pulseRate;
+    }
+    private int patientId;
+    private String doctorName;
+    private String bloodSugar;
+    private String pressure;
+    private String temperature;
+    private String pulseRate;
     
-    private EncounterHistory encounterHistory;
+   
 
-    public EncounterHistory getEncounterHistory() {
+
+    public ArrayList<Encounter>  getEncounterHistory() {
         return encounterHistory;
     }
 
-    public void setEncounterHistory(EncounterHistory encounterHistory) {
+    public void setEncounterHistory(ArrayList<Encounter> encounterHistory) {
         this.encounterHistory = encounterHistory;
     }
 
@@ -52,10 +89,12 @@ public class Patient extends Person{
     public void setPatientDirectory(PatientDirectory patientDirectory) {
         this.patientDirectory = patientDirectory;
     }
-    private PatientDirectory patientDirectory;
-    
-    
-    
-    
-    
+     public Encounter addNewEncounterDetails(){
+        Encounter newEncounterDetails = new Encounter();
+        encounterHistory.add(newEncounterDetails);
+        return newEncounterDetails;
+    }
+     public Patient() {
+        this.encounterHistory = new ArrayList<Encounter>();
+    }
 }

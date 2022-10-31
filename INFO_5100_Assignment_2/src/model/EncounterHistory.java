@@ -8,15 +8,28 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class EncounterHistory {
-        private ArrayList<Encounter> encounterHistory;
-        
-        
-        public EncounterHistory()
-        {
-            this.encounterHistory = new ArrayList<>();
-        }
+
+    private ArrayList<Encounter> encounterHistory;
+
+    public EncounterHistory() {
+        //encounter=new ArrayList<Encounter>();
+    }
+
+    public ArrayList<Encounter> getEncounterHistory() {
+        return encounterHistory;
+    }
+
+    public void setEncounterHistory(ArrayList<Encounter> encounterHistory) {
+        this.encounterHistory = encounterHistory;
+    }
+
+    public Encounter addNewEncounterDetails() {
+        Encounter newEncounterDetails = new Encounter();
+        encounterHistory.add(newEncounterDetails);
+        return newEncounterDetails;
+    }
 
 }

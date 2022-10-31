@@ -6,14 +6,36 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
-public class Hospital extends Doctor{
-    private HospitalDirectory hospitalDirectory;
+public class Hospital  extends Doctor {
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
+    public Hospital(){
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return hospitalName;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     private String hospitalName;
-    private int hospitalId;
-      private Community community;
-    private City city;
+    private int id;
+    private HospitalDirectory hospitalDirectory;
 
     public Community getCommunity() {
         return community;
@@ -30,7 +52,8 @@ public class Hospital extends Doctor{
     public void setCity(City city) {
         this.city = city;
     }
-    
+    private Community community;
+    private City city;
 
     public HospitalDirectory getHospitalDirectory() {
         return hospitalDirectory;
@@ -39,20 +62,5 @@ public class Hospital extends Doctor{
     public void setHospitalDirectory(HospitalDirectory hospitalDirectory) {
         this.hospitalDirectory = hospitalDirectory;
     }
-
-    public String getHospitalName() {
-        return hospitalName;
-    }
-
-    public void setHospitalName(String hospitalName) {
-        this.hospitalName = hospitalName;
-    }
-
-    public int getHospitalId() {
-        return hospitalId;
-    }
-
-    public void setHospitalId(int hospitalId) {
-        this.hospitalId = hospitalId;
-    }
+    
 }

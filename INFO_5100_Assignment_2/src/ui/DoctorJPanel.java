@@ -4,9 +4,13 @@
  */
 package ui;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Encounter;
+
 import model.Patient;
 import model.PatientDirectory;
 import model.Person;
@@ -16,25 +20,114 @@ import model.Vitals;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class DoctorJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DoctorJPanel
      */
-    PersonDirectory personDirectory;
+    PersonDirectory detailsHistory;
     PatientDirectory patientDirectory;
+    ArrayList<Patient> patientList;
     VitalHistory vitalHistory;
-    public DoctorJPanel( PersonDirectory personDir , PatientDirectory patientDir, VitalHistory vitalHis) {
-        initComponents();
-        personDirectory = personDir;
-        patientDirectory = patientDir;
-        populatePatientTable();
-       // vitalHistory = new VitalHistory();
-        vitalHistory = vitalHis;
+    static String userRole;
+    static String userName;
+    static int userId;
 
-        
+    /**
+     * Creates new form DoctorForm
+     *
+     * @param detailsHistory
+     */
+    public DoctorJPanel(PersonDirectory detailsHistory, PatientDirectory patientList, String doctorName, String userRole, int doctorId) {
+        initComponents();
+        this.detailsHistory = detailsHistory;
+        this.patientDirectory = patientList;//check this in other one
+        this.patientList = filterPatientByDoctor(userName, userRole, patientList.getPatientList());
+        vitalHistory = new VitalHistory();
+        //this.patientList=detailsHistory.getPersonHistory();
+        displayProduct();
+        populatePatientTable();
+        this.userRole = userRole;
+        this.userName = doctorName;
+        this.userId = doctorId;
+    }
+
+    private ArrayList<Patient> filterPatientByDoctor(String doctorName, String userRole, ArrayList<Patient> patientList) {
+        ArrayList<Patient> newPatientList = new ArrayList<Patient>();
+        if (userRole == "Doctor") {
+            for (Patient pa : patientList) {
+                if (pa.getDoctorName().equals(doctorName)) {
+                    newPatientList.add(pa);
+
+                }
+            }
+            return newPatientList;
+        }
+        return patientList;
+    }
+
+    private void displayProduct() {
+        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
+
+        model.setRowCount(0);
+
+        for (Person ed : detailsHistory.getHistory()) {
+
+            Object[] row = new Object[9];
+            row[0] = ed;
+            row[1] = ed.getName();
+            row[2] = ed.getPhone();
+            //row[3]=ed.getEmail();
+            //row[4]=ed.getStartDate();
+            //row[4]=;
+            //row[5]=ed.getTeamInfo();
+            //row[6]=ed.getPositionTitle();
+            //row[7]=ed.getCellPhoneno();
+            //row[8]=ed.getEmail();
+
+            model.addRow(row);
+        }
+    }
+
+    private void populatePatientTable() {
+        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
+        model.setRowCount(0);
+
+        for (Patient pa : patientList) {
+            Object[] row = new Object[7];
+            row[0] = pa;
+            row[1] = pa.getAge();
+            row[2] = pa.getHouse();
+            row[3] = pa.getDoctorName();
+            model.addRow(row);
+
+        }
+    }
+
+    private void populateEncounterTable(int patientId) {
+
+        DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
+        model.setRowCount(0);
+
+        for (Patient pat : patientList) {
+            if (patientId == pat.getPatientId()) {
+                ArrayList<Encounter> pa;
+                pa = pat.getEncounterHistory();
+                for (Encounter et : pa) {
+                    Object[] row = new Object[6];
+                    row[0] = et.getBloodSugar();
+                    row[1] = et.getBloodPressue();
+                    row[2] = et.getTemperature();
+                    row[3] = et.getPulse();
+                    row[4] = et.isAbnormal();
+                    row[5] = et.getUpdateTime();
+
+                    model.addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -46,11 +139,6 @@ public class DoctorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPatientInfo = new javax.swing.JTable();
-        buttonAddVitals = new javax.swing.JButton();
-        buttonEdit = new javax.swing.JButton();
-        buttonRefresh = new javax.swing.JButton();
         penelVitalSigns = new javax.swing.JPanel();
         labelVitalSigns = new javax.swing.JLabel();
         labelBloodSugar = new javax.swing.JLabel();
@@ -62,20 +150,89 @@ public class DoctorJPanel extends javax.swing.JPanel {
         textPressure = new javax.swing.JTextField();
         textPulse = new javax.swing.JTextField();
         lablId = new javax.swing.JLabel();
-        textPatientName = new javax.swing.JTextField();
+        textName = new javax.swing.JTextField();
         buttonSave = new javax.swing.JButton();
+        labelAbnormal = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPatientInfo = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableEncounter = new javax.swing.JTable();
-        buttonView = new javax.swing.JButton();
-        Update = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        buttonRefresh = new javax.swing.JButton();
+        buttonEdit = new javax.swing.JButton();
+        buttonAddVitals = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(153, 204, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        penelVitalSigns.setBackground(new java.awt.Color(255, 255, 255));
+        penelVitalSigns.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelVitalSigns.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        labelVitalSigns.setForeground(new java.awt.Color(0, 51, 51));
+        labelVitalSigns.setText("Vital Signs");
+        penelVitalSigns.add(labelVitalSigns, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+
+        labelBloodSugar.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        labelBloodSugar.setText("Blood Sugar");
+        penelVitalSigns.add(labelBloodSugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 26));
+
+        labelPressure.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        labelPressure.setText("Pressure");
+        penelVitalSigns.add(labelPressure, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
+        labelTemperature.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        labelTemperature.setText("Temperature");
+        penelVitalSigns.add(labelTemperature, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        labelPulse.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        labelPulse.setText("Pulse Rate");
+        penelVitalSigns.add(labelPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, 30));
+        penelVitalSigns.add(textTemperature, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 235, 126, 27));
+        penelVitalSigns.add(textBloodSugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 153, 132, -1));
+        penelVitalSigns.add(textPressure, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 194, 132, -1));
+
+        textPulse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPulseKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textPulseKeyReleased(evt);
+            }
+        });
+        penelVitalSigns.add(textPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 280, 132, -1));
+
+        lablId.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lablId.setText("Patient Name");
+        penelVitalSigns.add(lablId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        penelVitalSigns.add(textName, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 109, 132, -1));
+
+        buttonSave.setText("Save");
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveActionPerformed(evt);
+            }
+        });
+        penelVitalSigns.add(buttonSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 88, -1));
+
+        labelAbnormal.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        labelAbnormal.setText("Abnormal");
+        penelVitalSigns.add(labelAbnormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
+
+        jRadioButton1.setText("Yes");
+        penelVitalSigns.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, -1));
+
+        add(penelVitalSigns, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 350, 420));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Avenir Next", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("               PATIENT SUMMARY");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 340, 40));
+
+        tblPatientInfo.setAutoCreateRowSorter(true);
         tblPatientInfo.setBackground(new java.awt.Color(204, 204, 255));
-        tblPatientInfo.setForeground(new java.awt.Color(102, 255, 102));
+        tblPatientInfo.setForeground(new java.awt.Color(0, 51, 51));
         tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -84,33 +241,29 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Name", "ID", "Age", "Doctor Name"
+                "Patient Name", "Age", "House", "Doctor Name"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         tblPatientInfo.setToolTipText("");
         jScrollPane1.setViewportView(tblPatientInfo);
 
-        buttonAddVitals.setText("Add Vitals");
-        buttonAddVitals.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddVitalsActionPerformed(evt);
-            }
-        });
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 620, 90));
 
-        buttonEdit.setText("Edit Vitals");
-        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditActionPerformed(evt);
+        tableEncounter.setBackground(new java.awt.Color(204, 204, 255));
+        tableEncounter.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Blood Sugar", "Pressure", "Temperature", "Pulse Rate", "Abnormal", "Encounter Timestamp"
             }
-        });
+        ));
+        jScrollPane2.setViewportView(tableEncounter);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 620, 90));
 
         buttonRefresh.setText("Refresh");
         buttonRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -118,345 +271,131 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 buttonRefreshActionPerformed(evt);
             }
         });
+        add(buttonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, -1));
 
-        penelVitalSigns.setBackground(new java.awt.Color(153, 204, 255));
-
-        labelVitalSigns.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        labelVitalSigns.setText("Vital Signs");
-
-        labelBloodSugar.setText("Blood Sugar");
-
-        labelPressure.setText("Pressure");
-
-        labelTemperature.setText("Temperature");
-
-        labelPulse.setText("Pulse Rate");
-
-        textBloodSugar.addActionListener(new java.awt.event.ActionListener() {
+        buttonEdit.setText("Edit Vitals");
+        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textBloodSugarActionPerformed(evt);
+                buttonEditActionPerformed(evt);
             }
         });
+        add(buttonEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
 
-        lablId.setText("Patient Name");
-
-        buttonSave.setText("Save");
-        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+        buttonAddVitals.setText("Add Vitals");
+        buttonAddVitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSaveActionPerformed(evt);
+                buttonAddVitalsActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout penelVitalSignsLayout = new javax.swing.GroupLayout(penelVitalSigns);
-        penelVitalSigns.setLayout(penelVitalSignsLayout);
-        penelVitalSignsLayout.setHorizontalGroup(
-            penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(labelVitalSigns))
-                    .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelPulse)
-                                .addComponent(labelTemperature)
-                                .addComponent(labelPressure)
-                                .addComponent(labelBloodSugar))
-                            .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                                .addComponent(lablId)
-                                .addGap(2, 2, 2)))
-                        .addGap(50, 50, 50)
-                        .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textBloodSugar, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                            .addComponent(textPatientName)
-                            .addComponent(textPressure)
-                            .addComponent(textTemperature)
-                            .addComponent(textPulse)))
-                    .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        penelVitalSignsLayout.setVerticalGroup(
-            penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(labelVitalSigns)
-                .addGap(56, 56, 56)
-                .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lablId)
-                    .addComponent(textPatientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(textBloodSugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(labelBloodSugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelPressure)
-                    .addComponent(textPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(labelTemperature))
-                    .addGroup(penelVitalSignsLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(textTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(penelVitalSignsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelPulse)
-                    .addComponent(textPulse, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        tableEncounter.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Blood Sugar", "Pressure", "Temperature", "Pulse Rate", "Encounter"
-            }
-        ));
-        jScrollPane2.setViewportView(tableEncounter);
-
-        buttonView.setText("View");
-        buttonView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonViewActionPerformed(evt);
-            }
-        });
-
-        Update.setText("Update");
-
-        jLabel2.setText("Search");
-
-        jLabel1.setBackground(new java.awt.Color(255, 51, 0));
-        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 18)); // NOI18N
-        jLabel1.setText("                                                     PATIENT SUMMARY");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(658, 658, 658)
-                                .addComponent(buttonView, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(131, 131, 131)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(133, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(buttonAddVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(96, 96, 96)
-                                .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(117, 117, 117)
-                                .addComponent(buttonRefresh))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(penelVitalSigns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(buttonAddVitals)
-                                    .addComponent(buttonEdit)
-                                    .addComponent(buttonRefresh)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(penelVitalSigns, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonView, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
+        add(buttonAddVitals, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buttonAddVitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddVitalsActionPerformed
-        // TODO add your handling code here:
-        int selectedRowIndex = tblPatientInfo.getSelectedRow();
-        
-         if (selectedRowIndex < 0) {
-            JOptionPane.showConfirmDialog(this, "Please select a row");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
-         Patient patient = (Patient) model.getValueAt(selectedRowIndex, 0);
-         
-
-         textPatientName.setText(patient.getName());
-
-         
-
-    }//GEN-LAST:event_buttonAddVitalsActionPerformed
-
-    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
-
-        DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
-//        for (Patient pat : patientList){
-//            // if(patientID==pat.getPatientID()){
-//                ArrayList<Encounter> pa;
-//                pa = pat.getEncounterHistory();
-//                for (Encounter et : pa){
-//                    textName.setText(String.valueOf(pat.getName()));
-//                    textBloodSugar.setText(String.valueOf(et.getBloodSugar()));
-//                    textPressure.setText(String.valueOf(et.getPressure()));
-//                    textTemperature.setText(String.valueOf(et.getTemperature()));
-//                    textPulse.setText(String.valueOf(et.getPulseRate()));
-//                }
-//            }
-    }//GEN-LAST:event_buttonEditActionPerformed
-
-    private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshActionPerformed
-        // TODO add your handling code here:
-        int selectedRowIndex = tblPatientInfo.getSelectedRow();
-        //    if (selectedRowIndex <0){
-            DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
-            int selectedPatientID = (int) model.getValueAt(selectedRowIndex, 1);
-            //populateEncounterTable(selectedPatientID);
-    }//GEN-LAST:event_buttonRefreshActionPerformed
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
 
         boolean chckBloodSugar = false;
-        boolean chckPressure =false;
+        boolean chckPressure = false;
         boolean chckTemperature = false;
         boolean chckPulseRate = false;
 
         chckBloodSugar = textBloodSugar.getText().isEmpty() ? true : false;
         chckPressure = textPressure.getText().isEmpty() ? true : false;
-        chckTemperature = textTemperature.getText().isEmpty()? true : false;
-        chckPulseRate = textPulse.getText().isEmpty()? true : false;
+        chckTemperature = textTemperature.getText().isEmpty() ? true : false;
+        chckPulseRate = textPulse.getText().isEmpty() ? true : false;
 
-        if((chckBloodSugar == false)&&(chckPressure == false)&&(chckTemperature == false)&&(chckPulseRate == false)){
+        if ((chckBloodSugar == false) && (chckPressure == false) && (chckTemperature == false) && (chckPulseRate == false)) {
             DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
             int selectedRowIndex = tblPatientInfo.getSelectedRow();
-            if (selectedRowIndex <0){
-                //JOptionPane.showMessageDialog(this, "Please Select a row to add as a Patient");
-                //return;
+            if (selectedRowIndex < 0) {
+                JOptionPane.showMessageDialog(this, "Please Select a row to add as a Patient");
+                return;
+            }
+            try {
+                Patient selectedPatientDetails = (Patient) model.getValueAt(selectedRowIndex, 0);
+                Encounter e = selectedPatientDetails.addNewEncounterDetails();
+                //VitalSigns v=vitalHistory.addVitals();
+                e.setBloodSugar(textBloodSugar.getText());
+                e.setBloodPressue(textBloodSugar.getText());
+                e.setTemperature(textTemperature.getText());
+                e.setPulse(Integer.parseInt(textPulse.getText()));
+                //e.setEncounterCount(e.getEncounterCount()+1);
+                //e.setEncounter(e);
+                e.setAbnormal(jRadioButton1.isSelected());
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
+                e.setUpdateTime(dtf.format(now));
+
+                int selectedPatientID = (int) model.getValueAt(selectedRowIndex, 1);
+                populateEncounterTable(selectedPatientDetails.getPatientId());
+                JOptionPane.showMessageDialog(this, "Vitals for selected patient added");
+            } catch (Exception e) {
+                System.out.println("Error" + e);
+                JOptionPane.showMessageDialog(this, "Please provide correct values");
             }
 
-         //   try{
-                Encounter e = new Encounter();
-                Vitals v=vitalHistory.addVitals();
-                v.setBloodPressure(Integer.parseInt(textBloodSugar.getText()));
-                v.setPulse(Integer.parseInt(textPulse.getText()));
-                v.setTemperature(Integer.parseInt(textBloodSugar.getText()));
-                e.setEncounterCount(e.getEncounterCount()+1);
-                v.setEncounter(e);
-                JOptionPane.showMessageDialog(this, "Vitals for selected patient added");
-                
-                
-                populateEncounterTable();
-                
-               // Patient selectedPatientDetails = (Patient)model.getValueAt(selectedRowIndex, 0);
-                //  txtPatientIDPatientInformation.setText(String.valueOf(selectedPatientDetails));
-             //   Encounter e = selectedPatientDetails.addNewEncounterDetails();
-               // e.setBloodSugar(textBloodSugar.getText());
-               // e.setPressure(textPressure.getText());
-              //  e.setTemperature(textTemperature.getText());
-               // e.setPulseRate(Integer.parseInt(textPulse.getText()));
-                //e.setAbnormal(radioButtonYes.isSelected());
-
-              //  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-              //  LocalDateTime now = LocalDateTime.now();
-               // e.setUpdateTime(dtf.format(now));
-
-              //  int selectedPatientID = (int) model.getValueAt(selectedRowIndex, 1);
-                //populateEncounterTable(selectedPatientID);
-//            }catch(Exception e){
-//                JOptionPane.showMessageDialog(this, "Please provide correct values");
-//            }
         }
 
     }//GEN-LAST:event_buttonSaveActionPerformed
 
-    private void buttonViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonViewActionPerformed
+    private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblPatientInfo.getSelectedRow();
+        //    if (selectedRowIndex <0){
+        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
+        int selectedPatientID = (int) model.getValueAt(selectedRowIndex, 1);
+        populateEncounterTable(selectedPatientID);
+    }//GEN-LAST:event_buttonRefreshActionPerformed
+
+    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         // TODO add your handling code here:
 
-        int selectedrowIndex=tblPatientInfo.getSelectedRow();
-
-        if(selectedrowIndex<0){
-            JOptionPane.showMessageDialog(this, "Please select a row to view");
-            return;
+        DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
+        for (Patient pat : patientList) {
+            // if(patientID==pat.getPatientID()){
+            ArrayList<Encounter> pa;
+            pa = pat.getEncounterHistory();
+            for (Encounter et : pa) {
+                textName.setText(String.valueOf(pat.getName()));
+                textBloodSugar.setText(String.valueOf(et.getBloodSugar()));
+                textPressure.setText(String.valueOf(et.getBloodPressue()));
+                textTemperature.setText(String.valueOf(et.getTemperature()));
+                textPulse.setText(String.valueOf(et.getPulse()));
+            }
         }
+    }//GEN-LAST:event_buttonEditActionPerformed
 
-        DefaultTableModel model=(DefaultTableModel)tblPatientInfo.getModel();
-      //  Patient selectedempDet=(Patient) model.getValueAt(selectedrowIndex, 0);
-
-        //textName.setText(selectedempDet.getName());
-        //textContact.setText(selectedempDet.getContact().toString());
-        //textEmail.setText(selectedempDet.getEmail());
-        //textGender.setText(selectedempDet.getGender());
-        //textLevel.setText(selectedempDet.getLevel());
-    }//GEN-LAST:event_buttonViewActionPerformed
-
-    private void textBloodSugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBloodSugarActionPerformed
+    private void buttonAddVitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddVitalsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textBloodSugarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
+        int selectedRowIndex = tblPatientInfo.getSelectedRow();
+        Patient selectedPatientDetails = (Patient) model.getValueAt(selectedRowIndex, 0);
+        textName.setText(String.valueOf(selectedPatientDetails));;
+
+    }//GEN-LAST:event_buttonAddVitalsActionPerformed
+
+    private void textPulseKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPulseKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPulseKeyReleased
+
+    private void textPulseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPulseKeyPressed
+        // TODO add your handling code here:
+           char value = evt.getKeyChar();
+        if((!Character.isDigit(value))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_textPulseKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Update;
     private javax.swing.JButton buttonAddVitals;
     private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonRefresh;
     private javax.swing.JButton buttonSave;
-    private javax.swing.JButton buttonView;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelAbnormal;
     private javax.swing.JLabel labelBloodSugar;
     private javax.swing.JLabel labelPressure;
     private javax.swing.JLabel labelPulse;
@@ -467,45 +406,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tableEncounter;
     private javax.swing.JTable tblPatientInfo;
     private javax.swing.JTextField textBloodSugar;
-    private javax.swing.JTextField textPatientName;
+    private javax.swing.JTextField textName;
     private javax.swing.JTextField textPressure;
     private javax.swing.JTextField textPulse;
     private javax.swing.JTextField textTemperature;
     // End of variables declaration//GEN-END:variables
 
-    private void populatePatientTable() {
-        DefaultTableModel model = (DefaultTableModel) tblPatientInfo.getModel();
-       model.setRowCount(0);
-       
-       for (Patient pa : patientDirectory.getPatientDetails()){
-           Object[] row = new Object[7];
-           row[0] = pa;
-           row[1] = pa.getPatientId();
-           row[2] = pa.getAge();
-           row[3] = pa.getDoctorName();
-         
-           model.addRow(row);
-           
-       }
-
-    }
-
-    private void populateEncounterTable() {
-
-       DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
-       model.setRowCount(0);
-       
-       for (Vitals v : vitalHistory.getVitalDetails()){
-           Object[] row = new Object[6];
-           row[0] = v.getBloodSugar();
-           row[1] = v.getBloodPressure();
-           row[2] = v.getTemperature();
-           row[3] = v.getPulse();
-           row[4] = v.getEncounter().getEncounterCount();
-           model.addRow(row);
-           
-       }
-
-
-    }
 }

@@ -8,31 +8,33 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class PatientDirectory {
-     private ArrayList<Patient> patientDirectory;
+    
+      private ArrayList<Patient> patient;
 
     public PatientDirectory() {
-        this.patientDirectory = new ArrayList<>();
-    }
 
-    public ArrayList<Patient> getPatientDetails() {
-        return patientDirectory;
-    }
-
-    public Patient addPatient() {
-
-        Patient p = new Patient();
-        patientDirectory.add(p);
-
-        return p;
+        this.patient = new ArrayList<Patient>();
 
     }
-
-    public void deletePatient(Patient selectedPatient) {
-
-        patientDirectory.remove(selectedPatient);
-
+    
+    public void setHistory(ArrayList<Patient> patientHistory) {
+        this.patient = patientHistory;
     }
+
+    public ArrayList<Patient> getPatientList() {
+        return patient;
+    }
+
+    public void setPatientList(ArrayList<Patient> patientList) {
+        this.patient = patientList;
+    }
+    public Patient addPatient(){
+        Patient newPatientDetails=new Patient();
+        patient.add(newPatientDetails);
+        return newPatientDetails;
+    }  
+    
 }

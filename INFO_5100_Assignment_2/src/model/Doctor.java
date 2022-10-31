@@ -6,20 +6,16 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class Doctor {
-    private String name;
-    private int doctorId;
-   // private String specialization;
- private DoctorDirectory doctorDirectory;
-    private Vitals vital;
-    public String getName() {
-        return name;
+
+    public String getDoctorName() {
+        return doctorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
     public int getDoctorId() {
@@ -30,6 +26,11 @@ public class Doctor {
         this.doctorId = doctorId;
     }
 
+    private String doctorName;
+    private int doctorId;
+    private Vitals vitalSigns;
+    private DoctorDirectory doctorDirectory;
+
     public DoctorDirectory getDoctorDirectory() {
         return doctorDirectory;
     }
@@ -38,15 +39,14 @@ public class Doctor {
         this.doctorDirectory = doctorDirectory;
     }
 
-    public Vitals getVital() {
-        return vital;
+    public Vitals getVitalSigns() {
+        return vitalSigns;
     }
 
-    public void setVital(Vitals vital) {
-        this.vital = vital;
+    public void setVitalSigns(Vitals vitalSigns) {
+        this.vitalSigns = vitalSigns;
     }
-   
-   // private Encounter encounter;
-    
     
 }
+
+

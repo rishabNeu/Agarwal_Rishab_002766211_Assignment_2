@@ -8,9 +8,10 @@ package model;
  *
  * @author Rishab
  */
-public class Encounter {
+public class Encounter extends Vitals {
     //private Vitals vital;
     private int encounterCount = 0;
+    private String updateTime;
 
     public int getEncounterCount() {
         return encounterCount;
@@ -21,16 +22,7 @@ public class Encounter {
     {
         
     }
-    
-    public Encounter(int encCount)
-    {
-       this.encounterCount = encCount;
-    }
-    
 
-    public void setEncounterCount(int encounterCount) {
-        this.encounterCount = encounterCount;
-    }
 //    public Vitals getVital() {
 //        return vital;
 //    }
@@ -47,7 +39,13 @@ public class Encounter {
         this.encounterHistory = encounterHistory;
     }
     private EncounterHistory encounterHistory;
-    
+     public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
     
     
 }

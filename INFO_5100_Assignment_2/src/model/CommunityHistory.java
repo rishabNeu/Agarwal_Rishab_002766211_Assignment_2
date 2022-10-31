@@ -8,39 +8,29 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class CommunityHistory {
     
+    private ArrayList<Community> communityHistory;
     
-       private ArrayList<Community> communityHistory;
-
-    public CommunityHistory() {
+    public CommunityHistory(){
         this.communityHistory = new ArrayList<>();
     }
-
     
-       public ArrayList<Community> getCommunityDetails() {
+    public ArrayList<Community> getCommunityHistory(){
         return communityHistory;
     }
     
-
-    public Community addCommunity()
-    {
-         Community community = new Community();
+    public Community addCommunity(){
+        
+        Community community = new Community();
         communityHistory.add(community);
-
         return community;
-
     }
-
     
-      public void deleteCommunity(Community selectedCommunity) {
-
+    public void deleteCommunity(Community selectedCommunity){
         communityHistory.remove(selectedCommunity);
-
     }
-
     
 }
-

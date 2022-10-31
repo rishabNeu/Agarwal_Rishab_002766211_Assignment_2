@@ -4,24 +4,60 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class House {
+    
     //private Person person;
-    private String  address; 
-
-      @Override
-    public String toString() {
-        return  address;
-    }
-
+    private String address;
+//    private String address;
     
-    
-    public House(String address) {
+//    @Override
+//    public String toString(){
+//        return address;
+//    }
+//    
+    public House(String address){
         this.address = address;
+
     }
+
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
+//
+//    public Person getPerson() {
+//        return person;
+//    }
+//
+//    public void setPerson(Person person) {
+//        this.person = person;
+//    }
+//    
+//     public String addNewHouse() {
+//        String newhouse = new String();
+//        house.add(newhouse);
+//        return newhouse;
+
+//    public void setHouseHistory(ArrayList<String> house) {
+//        this.house = house;
+//    }
+//    
+//     public ArrayList<String> getHouseHistory() {
+//        return house;
+//    }
+//     
+//      public void deleteHouse(String h){
+//        house.remove(h); 
+//    }
 
     public String getAddress() {
         return address;
@@ -30,8 +66,12 @@ public class House {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public House() {
+    
+     @Override
+    public String toString() {
+        return String.valueOf(address) ;
     }
+    
+
     
 }

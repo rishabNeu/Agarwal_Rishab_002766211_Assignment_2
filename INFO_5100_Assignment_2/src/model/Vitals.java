@@ -6,11 +6,10 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
 public class Vitals {
-    
-    private Encounter encounter;
+ private Encounter encounter;
 
     public Encounter getEncounter() {
         return encounter;
@@ -19,18 +18,8 @@ public class Vitals {
     public void setEncounter(Encounter encounter) {
         this.encounter = encounter;
     }
-    private int bloodPressure;
-    private int pulse;
 
-    private int bloodSugar;
 
-    public int getBloodSugar() {
-        return bloodSugar;
-    }
-
-    public void setBloodSugar(int bloodSugar) {
-        this.bloodSugar = bloodSugar;
-    }
     public int getPulse() {
         return pulse;
     }
@@ -38,27 +27,43 @@ public class Vitals {
     public void setPulse(int pulse) {
         this.pulse = pulse;
     }
-
-    private int temperature;
-
-    public int getBloodPressure() {
-        return bloodPressure;
+     private String bloodSugar;
+    
+    public boolean isAbnormal() {
+        return abnormal;
     }
 
-    public void setBloodPressure(int bloodPressure) {
-        this.bloodPressure = bloodPressure;
+    public void setAbnormal(boolean abnormal) {
+        this.abnormal = abnormal;
+    }
+    
+    private boolean abnormal;
+
+    public String getBloodSugar() {
+        return bloodSugar;
     }
 
- 
+    public void setBloodSugar(String bloodSugar) {
+        this.bloodSugar = bloodSugar;
+    }
 
-    public int getTemperature() {
+    public String getBloodPressue() {
+        return bloodPressue;
+    }
+
+    public void setBloodPressue(String bloodPressue) {
+        this.bloodPressue = bloodPressue;
+    }
+
+    public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
-
-    
+    private String bloodPressue;
+    private String temperature;
+    private int pulse;
     
 }

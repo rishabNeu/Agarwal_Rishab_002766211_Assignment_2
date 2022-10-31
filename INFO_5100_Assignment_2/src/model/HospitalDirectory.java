@@ -8,34 +8,30 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Rishab
+ * @author shobhitsrivastava
  */
+
 public class HospitalDirectory {
     
-      private ArrayList<Hospital> hospitalDirectory;
+      private ArrayList<Hospital> hospital;
 
     public HospitalDirectory() {
-        this.hospitalDirectory = new ArrayList<>();
-    }
 
-    public ArrayList<Hospital> getHospitalDetails() {
-        return hospitalDirectory;
-    }
-
-    public Hospital addHospital() {
-
-        Hospital h = new Hospital();
-        hospitalDirectory.add(h);
-
-        return h;
+        this.hospital = new ArrayList<Hospital>();
 
     }
-
-    public void deleteHospital(Hospital selectedHospital) {
-
-        hospitalDirectory.remove(selectedHospital);
+     public Hospital addNewHospital() {
+        Hospital newHospital = new Hospital();
+        hospital.add(newHospital);
+        return newHospital;
 
     }
-    
+      public void deleteHospital(Hospital p){
+        hospital.remove(p); 
+    }
+     public ArrayList<Hospital> getHospitalList() {
+        return hospital;
+    }
+
     
 }
