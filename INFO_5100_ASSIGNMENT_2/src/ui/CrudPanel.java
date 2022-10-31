@@ -96,6 +96,7 @@ public class CrudPanel extends javax.swing.JFrame {
             managePatient.setVisible(false);
             manageEncounter.setVisible(false);
             manageCommunity.setVisible(true);
+            searchPatient.setVisible(false);
             CommunityPanel panel = new CommunityPanel(communityHistory, userRole);
             jSplitPaneCrud.setRightComponent(panel);
         } else if (userRole == "Hospital Admin") {
@@ -104,6 +105,7 @@ public class CrudPanel extends javax.swing.JFrame {
             manageDoctor.setVisible(true);
             managePatient.setVisible(true);
             manageEncounter.setVisible(true);
+            searchPatient.setVisible(false);
             PersonPanel panel = new PersonPanel(personDirectory, communityHistory, patientDirectory, hospitalDirectory, userRole);
             jSplitPaneCrud.setRightComponent(panel);
         } else if (userRole == "Doctor") {
@@ -113,6 +115,7 @@ public class CrudPanel extends javax.swing.JFrame {
             manageEncounter.setVisible(false);
             managePatient.setVisible(false);
             manageDoctor.setVisible(true);
+            searchPatient.setVisible(false);
             DoctorJPanel panel = new DoctorJPanel(personDirectory, patientDirectory, userName, userRole, userId);
             jSplitPaneCrud.setRightComponent(panel);
         } else if (userRole == "Patient") {
@@ -121,6 +124,7 @@ public class CrudPanel extends javax.swing.JFrame {
             manageCommunity.setVisible(false);
             managePatient.setVisible(true);
             manageEncounter.setVisible(true);
+            searchPatient.setVisible(false);
             PersonPanel panel = new PersonPanel(personDirectory, communityHistory, patientDirectory, hospitalDirectory, userRole);
             jSplitPaneCrud.setRightComponent(panel);
         }
@@ -153,6 +157,7 @@ public class CrudPanel extends javax.swing.JFrame {
         manageEncounter = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         manageCommunity = new javax.swing.JButton();
+        searchPatient = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         loginPanel = new javax.swing.JPanel();
@@ -168,7 +173,6 @@ public class CrudPanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(51, 153, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         manageDoctor.setText("MANAGE DOCTOR");
         manageDoctor.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +180,6 @@ public class CrudPanel extends javax.swing.JFrame {
                 manageDoctorActionPerformed(evt);
             }
         });
-        jPanel3.add(manageDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 124, 192, 31));
 
         managePatient.setText("MANAGE PATIENT");
         managePatient.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +187,6 @@ public class CrudPanel extends javax.swing.JFrame {
                 managePatientActionPerformed(evt);
             }
         });
-        jPanel3.add(managePatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 45, 192, 31));
 
         manageHospital.setText("MANAGE HOSPITAL");
         manageHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +194,6 @@ public class CrudPanel extends javax.swing.JFrame {
                 manageHospitalActionPerformed(evt);
             }
         });
-        jPanel3.add(manageHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 275, 192, 33));
 
         manageEncounter.setText("MANAGE ENCOUNTER");
         manageEncounter.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +201,6 @@ public class CrudPanel extends javax.swing.JFrame {
                 manageEncounterActionPerformed(evt);
             }
         });
-        jPanel3.add(manageEncounter, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 354, 192, 37));
 
         jButton4.setText("LOGOUT");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +208,6 @@ public class CrudPanel extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 459, 192, 35));
 
         manageCommunity.setText("MANAGE COMMUNITY");
         manageCommunity.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +215,61 @@ public class CrudPanel extends javax.swing.JFrame {
                 manageCommunityActionPerformed(evt);
             }
         });
-        jPanel3.add(manageCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 202, 192, 35));
+
+        searchPatient.setText("SEARCH PATIENT");
+        searchPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchPatientActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(managePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(manageDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(manageCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(manageHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(manageEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(searchPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(managePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(manageDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(manageCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(manageHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(manageEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(searchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jSplitPaneCrud.setLeftComponent(jPanel3);
 
@@ -349,6 +402,7 @@ public class CrudPanel extends javax.swing.JFrame {
         managePatient.setVisible(false);
         manageEncounter.setVisible(false);
         manageCommunity.setVisible(false);
+        
         jSplitPaneCrud.setRightComponent(loginPanel);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -402,6 +456,12 @@ public class CrudPanel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please provide values for Username and Password");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void searchPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPatientActionPerformed
+        // TODO add your handling code here:
+        SearchJPanel searc = new SearchJPanel(personDirectory,patientDirectory);
+        jSplitPaneCrud.setRightComponent(searc);
+    }//GEN-LAST:event_searchPatientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -496,6 +556,7 @@ public class CrudPanel extends javax.swing.JFrame {
     private javax.swing.JButton manageHospital;
     private javax.swing.JButton managePatient;
     private javax.swing.JTextField password;
+    private javax.swing.JButton searchPatient;
     private javax.swing.JComboBox<String> userRoleComboBox;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
