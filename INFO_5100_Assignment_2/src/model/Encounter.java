@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author Rishab Agarwal
  */
 public class Encounter extends Vitals {
     //private Vitals vital;

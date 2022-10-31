@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * @author Rishab
+ * @author Rishab Agarwal
  */
 
 
