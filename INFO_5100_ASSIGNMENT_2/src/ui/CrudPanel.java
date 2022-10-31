@@ -47,6 +47,7 @@ public class CrudPanel extends javax.swing.JFrame {
         managePatient.setVisible(false);
         manageEncounter.setVisible(false);
         manageCommunity.setVisible(false);
+          searchPatient.setVisible(false);
         doctor = new User();
         communityAdmin = new User();
         patientAdmin = new User();
@@ -98,6 +99,7 @@ public class CrudPanel extends javax.swing.JFrame {
             manageCommunity.setVisible(true);
             searchPatient.setVisible(false);
             CommunityPanel panel = new CommunityPanel(communityHistory, userRole);
+            
             jSplitPaneCrud.setRightComponent(panel);
         } else if (userRole == "Hospital Admin") {
             manageCommunity.setVisible(false);
@@ -124,7 +126,7 @@ public class CrudPanel extends javax.swing.JFrame {
             manageCommunity.setVisible(false);
             managePatient.setVisible(true);
             manageEncounter.setVisible(true);
-            searchPatient.setVisible(false);
+          
             PersonPanel panel = new PersonPanel(personDirectory, communityHistory, patientDirectory, hospitalDirectory, userRole);
             jSplitPaneCrud.setRightComponent(panel);
         }
@@ -134,6 +136,7 @@ public class CrudPanel extends javax.swing.JFrame {
             manageCommunity.setVisible(true);
             managePatient.setVisible(true);
             manageEncounter.setVisible(true);
+            searchPatient.setVisible(true);
             PersonPanel panel = new PersonPanel(personDirectory, communityHistory, patientDirectory, hospitalDirectory, userRole);
             jSplitPaneCrud.setRightComponent(panel);
         }
@@ -228,29 +231,16 @@ public class CrudPanel extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(managePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(manageDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(manageCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(manageHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(manageEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(managePatient, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(manageDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(manageCommunity, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(manageHospital, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(manageEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(searchPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(searchPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,10 +255,11 @@ public class CrudPanel extends javax.swing.JFrame {
                 .addComponent(manageHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(manageEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(searchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(searchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jSplitPaneCrud.setLeftComponent(jPanel3);
@@ -402,7 +393,7 @@ public class CrudPanel extends javax.swing.JFrame {
         managePatient.setVisible(false);
         manageEncounter.setVisible(false);
         manageCommunity.setVisible(false);
-        
+          searchPatient.setVisible(false);
         jSplitPaneCrud.setRightComponent(loginPanel);
     }//GEN-LAST:event_jButton4ActionPerformed
 
